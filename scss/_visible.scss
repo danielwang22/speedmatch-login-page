@@ -1,0 +1,12 @@
+.visible-desk{
+    display: block;
+    @include breakpoint(sm){
+        display: none;
+    }
+}
+.visible-mobile{
+    display: none;
+    @include breakpoint(sm){
+        display: block;
+    }
+}

@@ -1,0 +1,11 @@
+//格線
+.grid{
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+}
+@for $i from 1 through 12{
+    .grid-#{$i}{
+        @include makegrid($i / 12)
+    }
+}

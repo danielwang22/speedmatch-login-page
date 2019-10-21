@@ -1,0 +1,313 @@
+$font-family: "Chinese Quote",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+
+body{
+    font-family: $font-family;
+}
+//desk and up version
+.login-signal-desk{
+    // 頁面大標
+    .title-container{
+        position: relative;
+        padding-left: 145px;
+        padding-right: 145px;
+        @include breakpoint(md){
+            padding-left: 80px;
+            padding-right: 80px;
+        }
+        .title{
+           margin-top: 40px;
+           margin-bottom: 52px;
+           padding-top: 52px;
+           padding-left: 40px;
+           @include breakpoint(md){
+               padding-right: 480px;
+           }
+        }
+    }
+    // 頁面主背景圖
+    .main-background{
+        height: 680px;
+        max-height: 680px;
+        .background{
+            background-image: url(../assets/background/sign-up-background.jpg);
+            background-position: center center;
+            background-size:cover;
+            height: 100%;
+            width: 100%;
+        }
+
+    }
+    // 買車賣車選擇頁面
+    .program-content{
+        min-height: auto;
+        padding: 60px;
+        background-color: #f8f8f9;
+        display: block;
+        .btn-group{
+            margin-right: auto;
+            margin-left: auto;
+            margin-bottom: 80px;
+            .buyer-btn,.seller-btn{
+                border: 2px solid #000;
+                padding: 18px 90px;
+            }
+            .buyer-btn{
+                margin-right: 45px;
+                color: #f8f8f9;
+                background-color: #000;
+            }
+            .seller-btn{
+                color: #000;
+                background-color: #f8f8f9;
+            }
+        }
+        .program-info{
+            margin: 40px auto;
+            padding: 0 150px;
+        }
+        .market-comparison-table{
+            .table-item{
+                padding: 0 28px;
+            }
+        }
+    }
+    // 商品介紹內文
+    .product-content{
+        padding: 145px;
+        padding-top: 40px;
+        padding-bottom: 0;
+        @include breakpoint(md){
+            padding: 80px;
+            padding-top: 40px;
+            padding-bottom: 0;
+        }
+        .content-title{
+            margin-top: 52px;
+            margin-bottom: 52px;
+            padding-left: 32px;
+        }
+        .content-box{
+            padding-left: 32px;
+            &-icon{
+                margin-bottom: 32px;
+            }
+            &-title{
+                margin-bottom: 20px;
+            }
+            &-info{
+                margin-bottom: 88px;
+            }
+        }
+    }
+    footer{
+        height: 75px;
+        min-height: 75px;
+        background-color: #000000;
+    }
+}
+
+.login-signal-mobile{
+    width: 100vw;
+    height: auto;
+    .title{
+        text-align: center;
+        padding-top: 24px;
+        padding-bottom: 24px;
+        margin-bottom: 12px;
+    }
+    .product-content{
+        position: relative;
+        width: 100vw;
+        height: 228px;
+        overflow-x: hidden;
+        &-list{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: calc(100vw * 3);
+            transition: .5s ease-in-out;
+            .content-box{
+                position: relative;
+                &-title,&-info{
+                    text-align: center;
+                }
+                &-title{
+                    margin-bottom: 12px;
+                }
+                &-info{
+                    margin-bottom: 18px;
+                }
+            }
+        }
+        &-pagination{
+            width: 100vw;
+            height: auto;
+            margin-bottom: 12px;
+            .pagination-step{
+                padding: 2px;
+                div{
+                    padding: 6px;
+                }
+            }
+        }
+    }
+}
+
+//表單
+.base-info-form{
+    @include formInitSet;
+    .progress-bar{
+        @include progress(#000000,#fff,#fff,#000,#fff,#000,#fff,#000)
+    }
+    .user-photo{
+        position: relative;
+        width: 90px;
+        height: 90px;
+        margin-top: 24px;
+        margin-bottom: 24px;
+        margin-left: auto;
+        margin-right: auto;
+        &-update{
+            position:absolute;
+            right: 0;
+            bottom:3px;
+            width: 24px;
+            height: 24px;
+        }
+        input[type="file"] {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0,0,0,0);
+            border: 0;
+        }
+    }
+    .input-sex{
+        padding: 8px 0;
+        &-label{
+            margin-right: 20px;
+        }
+    }
+    .input-country,.input-city{
+        padding: 8px 15px;
+    }
+    .input-country{
+        width: 20%;
+    }
+    .input-city{
+        width: 80%;
+    }
+    a{
+        width: 100%;
+        margin-top: 32px;
+        margin-bottom: 12px;
+    }
+}
+
+.set-account-form{
+    @include formInitSet;
+    .progress-bar{
+        @include progress(#fff,#000,#000000,#fff,#fff,#000,#fff,#000)
+    }
+    .form-title{
+        margin-bottom: 45px;
+    }
+    .set-account-input{
+        margin-bottom: 105px;
+    }
+    a{
+        width: 100%;
+        margin-bottom: 12px;
+    }
+}
+
+.set-password-form{
+    @include formInitSet;
+    .progress-bar{
+        @include progress(#fff,#000,#fff,#000,#000000,#fff,#fff,#000)
+    }
+    .form-title{
+        margin-bottom: 45px;
+    }
+    .set-password-input{
+        margin-bottom: 105px;
+    }
+    a{
+        width: 100%;
+        margin-bottom: 12px;
+    }
+}
+
+.signIn-success-form{
+    @include formInitSet;
+    .progress-bar{
+        @include progress(#fff,#000,#fff,#000,#fff,#000,#000000,#fff)
+    }
+    .user-photo{
+        position: relative;
+        width: 90px;
+        height: 90px;
+        margin-top: 43px;
+        margin-bottom: 24px;
+        margin-left: auto;
+        margin-right: auto;
+        &-success{
+            position:absolute;
+            right: 0;
+            bottom:3px;
+            width: 24px;
+            height: 24px;
+        }
+    }
+    .success-content{
+        font-size: 18px;
+        margin-bottom: 65px;
+    }
+    a{
+        width: 100%;
+        margin-bottom: 12px;
+    }
+}
+
+.logIn-form{
+    @include formInitSet;
+    .form-title{
+        margin-bottom: 45px;
+    }
+    .logIn-input{
+        margin-bottom: 160px;
+    }
+    a{
+        width: 100%;
+        margin-bottom: 12px;
+    }
+}
+
+.forget-password-form{
+    @include formInitSet;
+    .form-title{
+        margin-bottom: 80px;
+    }
+    .forget-password-input{
+        margin-bottom: 105px;
+    }
+    a{
+        width: 100%;
+    }
+}
+
+.set-new-password-form{
+    @include formInitSet;
+    .form-title{
+        margin-bottom: 45px;
+    }
+    .set-new-password-input{
+        margin-bottom: 105px;
+    }
+    a{
+        width: 100%;
+    }
+}
