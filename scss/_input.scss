@@ -10,15 +10,35 @@ input{
         background: #fff;
     }
     &:focus{
-        outline: 0 !important; 
+        outline: 0 !important;
+        border: .5px solid rgb(71, 170, 224);
         -webkit-box-shadow: none !important; 
         -moz-box-shadow: none !important; 
-        box-shadow: none !important; 
+        box-shadow: 0 0 0 0.2rem rgba(71, 170, 224, 0.25) !important; 
     }
 }
 //input placeholder
 ::placeholder {
     font-family: $font-family;
+}
+
+//custom input autofill
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    font-family: $font-family;
+    border: 0.5px solid #9c95ff;
+    -webkit-text-fill-color: black;
+    box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.055) inset;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.055) inset;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 //custom radio
@@ -76,6 +96,16 @@ input{
 //date
 input[type=date]{
     font-family: $font-family;
+}
+[type="date"] {
+    border: .5px solid rgb(116,116,116);
+    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+[type="date"]::-webkit-inner-spin-button {
+    display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
 }
 
 //select

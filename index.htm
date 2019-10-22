@@ -17,7 +17,7 @@
                 <span class="title-secondary font-weight-normal">隨時隨地關注車有動態</span>
             </div>
             <!-- 表單 -->
-            <form class="base-info-form d-block form-bg" action="">
+            <form name="base-info-desktop" class="base-info-form d-block form-bg" onsubmit="return validateBaseInfo()">
                 <div class="progress-bar d-flex justify-content-between postion-relative">
                     <div class="progress-step border-light circle-rounded form-bg"></div>
                     <div class="progress-step border-light circle-rounded form-bg"></div>
@@ -32,35 +32,35 @@
                     </label>
                     <input class="add-photo" type="file" name="file" id="update-photo">
                 </div>
-                <div class="form-group">
+                <div id="name" class="form-group">
                     <input type="text" name="name" id="name" placeholder="真實姓名">
                     <input type="text" name="Nickname" id="Nickname" placeholder="暱稱">
                 </div>
-                <div class="form-group">
+                <div id="sexAndBirthday" class="form-group">
                     <div class="input-sex d-flex">
                         <div class="input-sex-label font-muted">性別</div>
                         <span style="margin-right: 20px;">
-                            <input type="radio" id="man" name="radio-group" checked>
+                            <input type="radio" id="man" name="radio-sex" checked>
                             <label for="man">男</label>
                         </span>
                         <span style="margin-right: 20px;">
-                            <input type="radio" id="woman" name="radio-group">
+                            <input type="radio" id="woman" name="radio-sex">
                             <label for="woman">女</label>
                         </span>
                     </div>
                     <input type="date" name="birthday" id="birthday" placeholder="出生年月日">
                 </div>
-                <div class="form-group">
-                    <input type="email" name="email" id="email" placeholder="電子郵件">
+                <div id="email" class="form-group">
+                    <input type="email" name="email" id="email" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" placeholder="電子郵件">
                 </div>
-                <div class="form-group d-flex">
+                <div id="city" class="form-group d-flex flex-row">
                     <div class="input-country bg-white border-light font-muted" id="country">台灣</div>
-                    <select class="input-city" name="city" id="city" required>
+                    <select class="input-city" name="city">
                         <option value="" disabled selected hidden>請選擇城市</option>
                         <option value="台中">台中</option>
                     </select>
                 </div>
-                <a href="./setAccount.html" class="btn bg-black">下一步</a>
+                <button type="submit" class="btn bg-black">下一步</button>
                 <div class="d-flex justify-content-between">
                     <span>已有帳號嗎？
                     <a href="./logIn.html" class="font-color-primary">
@@ -209,7 +209,7 @@
                     <option value="台中">台中</option>
                 </select>
             </div>
-            <a href="./setAccount.html" class="btn bg-black">下一步</a>
+            <button type="submit" class="btn bg-black">下一步</a>
             <div class="d-flex justify-content-between">
                 <span>已有帳號嗎？
                 <a href="./logIn.html" class="font-color-primary">

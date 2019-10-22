@@ -1,0 +1,15 @@
+@keyframes fadein{
+    from{
+        transform: translateY(20%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.fadIn{
+    animation: fadein 1s;
+    transition: .5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}

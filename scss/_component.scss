@@ -43,6 +43,9 @@ body{
         padding: 60px;
         background-color: #f8f8f9;
         display: block;
+        @include breakpoint(tableMd){
+            padding: 60px 30px;
+        }
         .btn-group{
             margin-right: auto;
             margin-left: auto;
@@ -50,24 +53,44 @@ body{
             .buyer-btn,.seller-btn{
                 border: 2px solid #000;
                 padding: 18px 90px;
+                cursor: pointer;
             }
             .buyer-btn{
                 margin-right: 45px;
                 color: #f8f8f9;
                 background-color: #000;
+                &:hover{
+                    background-color: lighten(#000,10%);
+                }
             }
             .seller-btn{
                 color: #000;
                 background-color: #f8f8f9;
+                &:hover{
+                    color: #f8f8f9;
+                    background-color: #000;
+                }
             }
         }
         .program-info{
             margin: 40px auto;
-            padding: 0 150px;
         }
         .market-comparison-table{
+            height: 350px;
+            margin-left: 10%;
+            @include breakpoint(tableMd){
+                margin-left: 5%;
+            }
             .table-item{
-                padding: 0 28px;
+                margin: 0 3.75px;
+                padding: 0 20px;
+                position: relative;
+                div{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                }
             }
         }
     }
@@ -115,6 +138,57 @@ body{
         padding-bottom: 24px;
         margin-bottom: 12px;
     }
+    .program-content{
+        height: auto;
+        padding: 20px;
+        background-color: #f8f8f9;
+        display: block;
+        .program-title{
+            margin-top: 5px !important;
+            margin-bottom: 20px;
+        }
+        .program-info{
+            margin-top: 20px;
+            margin-bottom: 48px;
+        }
+        .market-comparison-table{
+            height: 300px;
+            margin-top: 28px;
+            .table-item{
+                margin: 0 3.75px;
+                padding: 0 8px;
+                position: relative;
+                div{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+                }
+            }
+        }
+    }
+    .btn-group{
+        margin-top: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        .buyer-btn,.seller-btn{
+            font-family: $font-family;
+            border: none;
+            border-bottom: 2px solid #000;
+            padding: 16px 70px;
+        }
+        .buyer-btn{
+            color: #ffffff;
+            background-color: #000;
+            &:hover{
+                background-color: lighten(#000,10%);
+            }
+        }
+        .seller-btn{
+            color: #000;
+            background-color: #ffffff;
+        }
+    }
     .product-content{
         position: relative;
         width: 100vw;
@@ -150,6 +224,11 @@ body{
                 }
             }
         }
+    }
+    footer{
+        height: 75px;
+        min-height: 75px;
+        background-color: #000000;
     }
 }
 
@@ -200,7 +279,7 @@ body{
     .input-city{
         width: 80%;
     }
-    a{
+    button[type="submit"]{
         width: 100%;
         margin-top: 32px;
         margin-bottom: 12px;

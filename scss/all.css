@@ -462,13 +462,15 @@ a {
 }
 
 .align-items-center {
-  -ms-flex-line-pack: center;
-      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .align-items-stretch {
-  -ms-flex-line-pack: stretch;
-      align-content: stretch;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
 }
 
 .align-self-start {
@@ -533,6 +535,12 @@ body {
   display: block;
 }
 
+@media only screen and (max-width: 992px) and (min-width: 769px) {
+  .login-signal-desk .program-content {
+    padding: 60px 30px;
+  }
+}
+
 .login-signal-desk .program-content .btn-group {
   margin-right: auto;
   margin-left: auto;
@@ -542,6 +550,7 @@ body {
 .login-signal-desk .program-content .btn-group .buyer-btn, .login-signal-desk .program-content .btn-group .seller-btn {
   border: 2px solid #000;
   padding: 18px 90px;
+  cursor: pointer;
 }
 
 .login-signal-desk .program-content .btn-group .buyer-btn {
@@ -550,18 +559,55 @@ body {
   background-color: #000;
 }
 
+.login-signal-desk .program-content .btn-group .buyer-btn:hover {
+  background-color: #1a1a1a;
+}
+
 .login-signal-desk .program-content .btn-group .seller-btn {
   color: #000;
   background-color: #f8f8f9;
 }
 
+.login-signal-desk .program-content .btn-group .seller-btn:hover {
+  color: #f8f8f9;
+  background-color: #000;
+}
+
 .login-signal-desk .program-content .program-info {
   margin: 40px auto;
-  padding: 0 150px;
+}
+
+.login-signal-desk .program-content .market-comparison-table {
+  height: 350px;
+  margin-left: 10%;
+}
+
+@media only screen and (max-width: 992px) and (min-width: 769px) {
+  .login-signal-desk .program-content .market-comparison-table {
+    margin-left: 5%;
+  }
 }
 
 .login-signal-desk .program-content .market-comparison-table .table-item {
-  padding: 0 28px;
+  margin: 0 3.75px;
+  padding: 0 20px;
+  position: relative;
+}
+
+.login-signal-desk .program-content .market-comparison-table .table-item div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .login-signal-desk .product-content {
@@ -618,6 +664,77 @@ body {
   margin-bottom: 12px;
 }
 
+.login-signal-mobile .program-content {
+  height: auto;
+  padding: 20px;
+  background-color: #f8f8f9;
+  display: block;
+}
+
+.login-signal-mobile .program-content .program-title {
+  margin-top: 5px !important;
+  margin-bottom: 20px;
+}
+
+.login-signal-mobile .program-content .program-info {
+  margin-top: 20px;
+  margin-bottom: 48px;
+}
+
+.login-signal-mobile .program-content .market-comparison-table {
+  height: 300px;
+  margin-top: 28px;
+}
+
+.login-signal-mobile .program-content .market-comparison-table .table-item {
+  margin: 0 3.75px;
+  padding: 0 8px;
+  position: relative;
+}
+
+.login-signal-mobile .program-content .market-comparison-table .table-item div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-signal-mobile .btn-group {
+  margin-top: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.login-signal-mobile .btn-group .buyer-btn, .login-signal-mobile .btn-group .seller-btn {
+  font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  border: none;
+  border-bottom: 2px solid #000;
+  padding: 16px 70px;
+}
+
+.login-signal-mobile .btn-group .buyer-btn {
+  color: #ffffff;
+  background-color: #000;
+}
+
+.login-signal-mobile .btn-group .buyer-btn:hover {
+  background-color: #1a1a1a;
+}
+
+.login-signal-mobile .btn-group .seller-btn {
+  color: #000;
+  background-color: #ffffff;
+}
+
 .login-signal-mobile .product-content {
   position: relative;
   width: 100vw;
@@ -662,6 +779,12 @@ body {
 
 .login-signal-mobile .product-content-pagination .pagination-step div {
   padding: 6px;
+}
+
+.login-signal-mobile footer {
+  height: 75px;
+  min-height: 75px;
+  background-color: #000000;
 }
 
 .base-info-form {
@@ -813,7 +936,7 @@ body {
   width: 80%;
 }
 
-.base-info-form a {
+.base-info-form button[type="submit"] {
   width: 100%;
   margin-top: 32px;
   margin-bottom: 12px;
@@ -1281,8 +1404,9 @@ input:disabled {
 
 input:focus {
   outline: 0 !important;
+  border: 0.5px solid #47aae0;
   -webkit-box-shadow: none !important;
-  box-shadow: none !important;
+  box-shadow: 0 0 0 0.2rem rgba(71, 170, 224, 0.25) !important;
 }
 
 ::-webkit-input-placeholder {
@@ -1299,6 +1423,25 @@ input:focus {
 
 ::placeholder {
   font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+/* Change Autocomplete styles in Chrome*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  border: 0.5px solid #9c95ff;
+  -webkit-text-fill-color: black;
+  box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.055) inset;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.055) inset;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 
 [type="radio"]:checked,
@@ -1358,6 +1501,19 @@ input:focus {
 
 input[type=date] {
   font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+[type="date"] {
+  border: 0.5px solid #747474;
+  background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) 97% 50% no-repeat;
+}
+
+[type="date"]::-webkit-inner-spin-button {
+  display: none;
+}
+
+[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
 }
 
 select {
@@ -1605,10 +1761,48 @@ select:invalid {
   font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   line-height: 1.5;
   border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #1a1a1a;
 }
 
 .table-shadow {
   -webkit-box-shadow: 7px 7px 5px #00000015;
           box-shadow: 7px 7px 5px #00000015;
+}
+
+@-webkit-keyframes fadein {
+  from {
+    -webkit-transform: translateY(20%);
+            transform: translateY(20%);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    -webkit-transform: translateY(20%);
+            transform: translateY(20%);
+    opacity: 0;
+  }
+  to {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.fadIn {
+  -webkit-animation: fadein 1s;
+          animation: fadein 1s;
+  -webkit-transition: 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  transition: 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 /*# sourceMappingURL=all.css.map */

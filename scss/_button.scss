@@ -14,4 +14,8 @@
     font-family: $font-family;
     line-height: 1.5;
     border-radius: 0.25rem;
+    cursor: pointer;
+    &:hover{
+      background-color: lighten(#000,10%);
+    }
   }
