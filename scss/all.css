@@ -1499,36 +1499,36 @@ select:-webkit-autofill:focus {
   transform: scale(1);
 }
 
-input[type=date] {
+input[type="date"] {
   font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-}
-
-[type="date"] {
   color: black;
   border: 0.5px solid #747474;
   background-color: #fff;
 }
 
-[type="date"]::-webkit-datetime-edit-month-field {
+input[type="date"]::-webkit-datetime-edit-month-field {
   color: black;
 }
 
-[type="date"]::-webkit-datetime-edit-day-field {
+input[type="date"]::-webkit-datetime-edit-day-field {
   color: black;
 }
 
-[type="date"]::-webkit-datetime-edit-year-field {
+input[type="date"]::-webkit-datetime-edit-year-field {
   color: black;
 }
 
 input[type="date"]::before {
   content: attr(data-placeholder);
-  color: black;
+  color: #747474;
   width: 100%;
 }
 
-input[type="date"]:focus::before,
-input[type="date"]:valid::before {
+input[type="date"]:focus {
+  color: #000;
+}
+
+input[type="date"]:focus::before, input[type="date"]:valid::before {
   display: none;
 }
 

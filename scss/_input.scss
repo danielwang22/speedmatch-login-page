@@ -94,10 +94,8 @@ select:-webkit-autofill:focus {
 }
 
 //date
-input[type=date]{
+input[type="date"] {
     font-family: $font-family;
-}
-[type="date"] {
     color: black;
     border: .5px solid rgb(116,116,116);
     background-color: #fff;
@@ -110,17 +108,21 @@ input[type=date]{
     &::-webkit-datetime-edit-year-field {
         color: black;
     }
-}
-input[type="date"]::before { 
-    content: attr(data-placeholder);
-    color: black;
-    width: 100%;
-}
-input[type="date"]:focus::before,
-input[type="date"]:valid::before { display: none }
-input[type="date"]:invalid::-webkit-datetime-edit{
-    background-color: #fff;
-    color: black;
+    &::before { 
+        content: attr(data-placeholder);
+        color: rgb(116,116,116);
+        width: 100%;
+    }
+    &:focus{
+        color: #000;
+    }
+    &:focus::before,&:valid::before { 
+        display: none 
+    }
+    &:invalid::-webkit-datetime-edit{
+        background-color: #fff;
+        color: black;
+    }
 }
 
 //select
