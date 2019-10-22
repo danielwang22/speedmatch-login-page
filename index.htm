@@ -55,7 +55,7 @@
                 </div>
                 <div id="city" class="form-group d-flex flex-row">
                     <div class="input-country bg-white border-light font-muted" id="country">台灣</div>
-                    <select class="input-city" name="city">
+                    <select class="input-city" name="city" required>
                         <option value="" disabled selected hidden>請選擇城市</option>
                         <option value="台中">台中</option>
                     </select>
@@ -189,12 +189,12 @@
                 <div class="input-sex d-flex">
                     <div class="input-sex-label font-muted">性別</div>
                     <span style="margin-right: 20px;">
-                        <input type="radio" id="man" name="radio-sex" checked>
-                        <label for="man">男</label>
+                        <input type="radio" id="man-mobile" name="radio-sex" checked>
+                        <label for="man-mobile">男</label>
                     </span>
                     <span>
-                        <input type="radio" id="woman" name="radio-sex">
-                        <label for="woman">女</label>
+                        <input type="radio" id="woman-mobile" name="radio-sex">
+                        <label for="woman-mobile">女</label>
                     </span>
                 </div>
                 <input type="date" name="birthday" id="birthday" data-placeholder="出生年月日" required aria-required="true">

@@ -100,6 +100,7 @@ input[type=date]{
 [type="date"] {
     color: black;
     border: .5px solid rgb(116,116,116);
+    background-color: #fff;
     &::-webkit-datetime-edit-month-field {
         color: black;
     }
@@ -112,14 +113,14 @@ input[type=date]{
 }
 input[type="date"]::before { 
     content: attr(data-placeholder);
-    color: rgb(116,116,116);
+    color: black;
     width: 100%;
 }
 input[type="date"]:focus::before,
 input[type="date"]:valid::before { display: none }
 input[type="date"]:invalid::-webkit-datetime-edit{
     background-color: #fff;
-    color: rgb(116,116,116)0;
+    color: black;
 }
 
 //select
