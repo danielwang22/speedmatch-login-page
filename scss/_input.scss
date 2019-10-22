@@ -115,9 +115,12 @@ input[type="date"]::before {
     color: rgb(116,116,116);
     width: 100%;
 }
-
 input[type="date"]:focus::before,
 input[type="date"]:valid::before { display: none }
+input[type="date"]:invalid::-webkit-datetime-edit{
+    background-color: #fff;
+    color: rgb(116,116,116)0;
+}
 
 //select
 select{
