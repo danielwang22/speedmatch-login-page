@@ -1504,7 +1504,9 @@ input[type=date] {
 }
 
 [type="date"] {
+  color: black;
   border: 0.5px solid #747474;
+  background-color: #fff;
 }
 
 [type="date"]::-webkit-calendar-picker-indicator {
@@ -1513,7 +1515,6 @@ input[type=date] {
   display: block;
   background: url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) no-repeat 97% 50%;
   border-width: thin;
-  opacity: 1;
 }
 
 select {
