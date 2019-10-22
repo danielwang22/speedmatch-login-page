@@ -102,13 +102,6 @@ input[type=date]{
     border: .5px solid rgb(116,116,116);
     background-color: #fff;
 }
-[type="date"]::-webkit-calendar-picker-indicator {
-    color: rgba(0, 0, 0, 0);
-    opacity: 1;
-    display: block;
-    background: #fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png) no-repeat 97% 50%;
-    border-width: thin;
-}
 
 //select
 select{
