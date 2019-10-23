@@ -192,7 +192,7 @@ body{
     .product-content{
         position: relative;
         width: 100vw;
-        height: 228px;
+        height: 260px;
         overflow-x: hidden;
         &-list{
             position: absolute;
@@ -263,6 +263,11 @@ body{
             clip: rect(0,0,0,0);
             border: 0;
         }
+        #update-photo-error{
+            position: relative;
+            right: -107px;
+            bottom: -29px;
+        }
     }
     .input-sex{
         padding: 8px 0;
@@ -278,11 +283,6 @@ body{
     }
     .input-city{
         width: 80%;
-    }
-    button[type="submit"]{
-        width: 100%;
-        margin-top: 32px;
-        margin-bottom: 12px;
     }
 }
 
@@ -389,4 +389,10 @@ body{
     a{
         width: 100%;
     }
+}
+
+button[type="submit"]{
+    width: 100%;
+    margin-top: 32px;
+    margin-bottom: 12px;
 }

@@ -8,7 +8,7 @@
     <title>急速配對 | 註冊成為一員</title>
 </head>
 <body>
-    <!-- desk and top version -->
+    <!-- desk and up version -->
     <div class="login-signal-desk visible-desk">
         <!-- 頁面大標 -->
         <div class="title-container">
@@ -17,7 +17,7 @@
                 <span class="title-secondary font-weight-normal">隨時隨地關注車有動態</span>
             </div>
             <!-- 表單 -->
-            <form name="base-info-desktop" class="base-info-form d-block form-bg" onsubmit="return validateBaseInfo()">
+            <form name="base-info-desktop" class="base-info-form d-block form-bg" action="" method="POST">
                 <div class="progress-bar d-flex justify-content-between postion-relative">
                     <div class="progress-step border-light circle-rounded form-bg"></div>
                     <div class="progress-step border-light circle-rounded form-bg"></div>
@@ -30,7 +30,7 @@
                     <label class="user-photo-update" for="update-photo">
                         <img src="./assets/icon_add.svg" height="24px" alt="" srcset="">
                     </label>
-                    <input class="add-photo" type="file" name="file" id="update-photo">
+                    <input class="add-photo" type="file" name="userPhoto" id="update-photo">
                 </div>
                 <div id="name" class="form-group">
                     <input type="text" name="name" id="name" placeholder="真實姓名">
@@ -40,11 +40,11 @@
                     <div class="input-sex d-flex">
                         <div class="input-sex-label font-muted">性別</div>
                         <span style="margin-right: 20px;">
-                            <input type="radio" id="man" name="radio-sex" checked>
+                            <input type="radio" id="man" name="radioSex" checked>
                             <label for="man">男</label>
                         </span>
                         <span style="margin-right: 20px;">
-                            <input type="radio" id="woman" name="radio-sex">
+                            <input type="radio" id="woman" name="radioSex">
                             <label for="woman">女</label>
                         </span>
                     </div>
@@ -57,7 +57,25 @@
                     <div class="input-country bg-white border-light font-muted" id="country">台灣</div>
                     <select class="input-city" name="city" required>
                         <option value="" disabled selected hidden>請選擇城市</option>
-                        <option value="台中">台中</option>
+                        <option value="基隆市">基隆市</option>
+                        <option value="台北市">台北市</option>	
+                        <option value="新北市">新北市</option>	
+                        <option value="桃園縣">桃園縣</option>	
+                        <option value="新竹縣">新竹縣</option>	
+                        <option value="新竹縣">新竹市</option>	
+                        <option value="苗栗縣">苗栗縣</option>	
+                        <option value="台中市">台中市</option>	
+                        <option value="南投縣">南投縣</option>	
+                        <option value="彰化縣">彰化縣</option>	
+                        <option value="雲林縣">雲林縣</option>
+                        <option value="嘉義縣">嘉義縣</option>
+                        <option value="嘉義市">嘉義市</option>
+                        <option value="台南市">台南市</option>
+                        <option value="高雄市">高雄市</option>	
+                        <option value="屏東縣">屏東縣</option>
+                        <option value="宜蘭縣">宜蘭縣</option>
+                        <option value="花蓮縣">花蓮縣</option>
+                        <option value="台東縣">台東縣</option>
                     </select>
                 </div>
                 <button type="submit" class="btn bg-black">下一步</button>
@@ -155,17 +173,17 @@
             </div>
         </div>
         <div class="product-content-pagination d-flex justify-content-center postion-relative">
-            <div class="pagination-step stepOne">
+            <div class="pagination-step step1">
                 <div class="border-light circle-rounded bg-black"></div>
             </div>
-            <div class="pagination-step stepSecond">
+            <div class="pagination-step step2">
                 <div class="border-light circle-rounded"></div>
             </div>
-            <div class="pagination-step stepThrid">
+            <div class="pagination-step step3">
                 <div class="border-light circle-rounded"></div>
             </div>
         </div>
-
+        
         <form class="base-info-form d-block form-bg" action="">
             <div class="progress-bar d-flex justify-content-between postion-relative">
                 <div class="progress-step border-light circle-rounded form-bg"></div>
@@ -179,7 +197,7 @@
                 <label class="user-photo-update" for="update-photo">
                     <img src="./assets/icon_add.svg" height="24px" alt="" srcset="">
                 </label>
-                <input class="add-photo" type="file" name="file" id="update-photo" accept="image/*">
+                <input class="add-photo" type="file" name="userPhoto" id="update-photo" accept="image/*">
             </div>
             <div class="form-group">
                 <input type="text" name="name" id="name" placeholder="真實姓名">
@@ -189,11 +207,11 @@
                 <div class="input-sex d-flex">
                     <div class="input-sex-label font-muted">性別</div>
                     <span style="margin-right: 20px;">
-                        <input type="radio" id="man-mobile" name="radio-sex" checked>
+                        <input type="radio" id="man-mobile" name="radioSex" checked>
                         <label for="man-mobile">男</label>
                     </span>
                     <span>
-                        <input type="radio" id="woman-mobile" name="radio-sex">
+                        <input type="radio" id="woman-mobile" name="radioSex">
                         <label for="woman-mobile">女</label>
                     </span>
                 </div>
@@ -202,11 +220,29 @@
             <div class="form-group">
                 <input type="email" name="email" id="email" placeholder="電子郵件">
             </div>
-            <div class="form-group d-flex">
+            <div class="form-group d-flex flex-row">
                 <div class="input-country bg-white border-light font-muted" id="country">台灣</div>
                 <select class="input-city" name="city" id="city" required>
                     <option value="" disabled selected hidden>請選擇城市</option>
-                    <option value="台中">台中</option>
+                    <option value="基隆市">基隆市</option>
+                    <option value="台北市">台北市</option>	
+                    <option value="新北市">新北市</option>	
+                    <option value="桃園縣">桃園縣</option>	
+                    <option value="新竹縣">新竹縣</option>	
+                    <option value="新竹縣">新竹市</option>	
+                    <option value="苗栗縣">苗栗縣</option>	
+                    <option value="台中市">台中市</option>	
+                    <option value="南投縣">南投縣</option>	
+                    <option value="彰化縣">彰化縣</option>	
+                    <option value="雲林縣">雲林縣</option>
+                    <option value="嘉義縣">嘉義縣</option>
+                    <option value="嘉義市">嘉義市</option>
+                    <option value="台南市">台南市</option>
+                    <option value="高雄市">高雄市</option>	
+                    <option value="屏東縣">屏東縣</option>
+                    <option value="宜蘭縣">宜蘭縣</option>
+                    <option value="花蓮縣">花蓮縣</option>
+                    <option value="台東縣">台東縣</option>
                 </select>
             </div>
             <button type="submit" class="btn bg-black">下一步</button>
@@ -221,6 +257,10 @@
         </form>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/localization/messages_zh_TW.min.js"></script>
     <script type="text/javascript" src="./js/all.js"></script>
 </body>
 </html>

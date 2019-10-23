@@ -1,14 +1,4 @@
-class signIn{
-    constructor(){
-
-    }
-}
-//Dom元素
-let baseInfoForm = document.querySelector('.base-info-form');
-let baseInfoFormName = document.querySelector('.base-info-form #name');
-let baseInfoFormSexAndBirthday = document.querySelector('.base-info-form #sexAndBirthday');
-let baseInfoFormEmail = document.querySelector('.base-info-form #email');
-let baseInfoFormcity = document.querySelector('.base-info-form #city');
+//desktop and up Dom元素
 let addPhoto = document.querySelectorAll('.add-photo');
 let userPhoto = document.querySelectorAll('.user-photo');
 let productContentList = document.querySelector('.product-content-list');
@@ -58,184 +48,24 @@ setInterval(()=>{
         offsetX += window.outerWidth;
         if(offsetX >= (window.outerWidth * 3)) offsetX = 0;
         productContentList.setAttribute('style',`left:-${offsetX}px !important`)
+        console.log(`${-window.outerWidth*3}px`)
+        if(productContentList.style.left == `0px`){
+            $(".step1 div").css('background-color',"black")
+            $(".step2 div").css('background-color',"#f8f8f9")
+            $(".step3 div").css('background-color',"#f8f8f9")
+        }
+        else if(productContentList.style.left == `${-window.outerWidth}px`){
+            $(".step1 div").css('background-color',"#f8f8f9")
+            $(".step2 div").css('background-color',"black")
+            $(".step3 div").css('background-color',"#f8f8f9")
+        }
+        else if(productContentList.style.left == `${-window.outerWidth*2}px`){
+            $(".step1 div").css('background-color',"#f8f8f9")
+            $(".step2 div").css('background-color',"#f8f8f9")
+            $(".step3 div").css('background-color',"black")
+        }
     }
 },5000)
-
-//form vaildate function
-const validateBaseInfo = ()=>{
-    let validate = false;
-    //真實姓名
-    let name = document.forms["base-info-desktop"]["name"];
-    if(name.value == ''){
-
-        let last_errorlist = document.getElementById('error-name');
-        if(last_errorlist){
-            baseInfoFormName.removeChild(last_errorlist)
-        }
-
-        let errorList = document.createElement('ui');
-        let error = document.createElement('li');
-
-        errorList.setAttribute('id','error-name')
-
-        error.textContent = '請輸入您的真實姓名'
-        error.setAttribute('style','color:red;')
-
-        errorList.appendChild(error);
-        baseInfoFormName.appendChild(errorList);
-
-        validate = false;
-    }else{
-        let errorList = document.getElementById('error-name')
-        if(errorList){
-            baseInfoFormName.removeChild(errorList)
-        }
-        validate = true;
-    }
-    //暱稱
-    let Nickname = document.forms["base-info-desktop"]["Nickname"];
-    if(Nickname.value == ''){
-        let last_errorlist = document.getElementById('error-Nickname');
-        if(last_errorlist){
-            baseInfoFormName.removeChild(last_errorlist)
-        }
-
-        let errorList = document.createElement('ui');
-        let error = document.createElement('li');
-
-        errorList.setAttribute('id','error-Nickname')
-
-        error.textContent = '請輸入您的暱稱'
-        error.setAttribute('style','color:red;')
-
-        errorList.appendChild(error);
-        baseInfoFormName.appendChild(errorList);
-
-        validate = false
-    }else{
-        let errorList = document.getElementById('error-Nickname')
-        if(errorList){
-            baseInfoFormName.removeChild(errorList)
-        }
-        validate = true;
-    }
-    //性別
-    let sex_chosen = "";
-    let sex = document.forms['base-info-desktop']['radio-sex'];
-    for(let i=0;i<sex.length;i++){
-        if(sex[i].checked == true){
-            sex_chosen = sex[i].id;
-        }
-    }
-
-    if(sex_chosen == ""){
-        let last_errorlist = document.getElementById('error-sex');
-        if(last_errorlist){
-            baseInfoFormName.removeChild(last_errorlist)
-        }
-
-        let errorList = document.createElement('ui');
-        let error = document.createElement('li');
-
-        errorList.setAttribute('id','error-sex')
-
-        error.textContent = '請選擇性別'
-        error.setAttribute('style','color:red;')
-
-        errorList.appendChild(error);
-        baseInfoFormName.appendChild(errorList);
-
-        validate = false
-    }
-    //出生年月日
-    let birthday = document.forms['base-info-desktop']['birthday'];
-    if(birthday.value == ''){
-        let last_errorlist = document.getElementById('error-birthday');
-        if(last_errorlist){
-            baseInfoFormName.removeChild(last_errorlist)
-        }
-
-        let errorList = document.createElement('ui');
-        let error = document.createElement('li');
-
-        errorList.setAttribute('id','error-birthday')
-
-        error.textContent = '請輸入您的出生年月日'
-        error.setAttribute('style','color:red;')
-
-        errorList.appendChild(error);
-        baseInfoFormSexAndBirthday.appendChild(errorList);
-
-        validate = false
-    }else{
-        let errorList = document.getElementById('error-birthday')
-        if(errorList){
-            baseInfoFormSexAndBirthday.removeChild(errorList)
-        }
-        validate = true;
-    }
-
-    //email
-    let email = document.forms['base-info-desktop']['email'];
-    if(email.value == ''){
-        let last_errorlist = document.getElementById('error-email');
-        if(last_errorlist){
-            baseInfoFormName.removeChild(last_errorlist)
-        }
-
-        let errorList = document.createElement('ui');
-        let error = document.createElement('li');
-
-        errorList.setAttribute('id','error-email')
-
-        error.textContent = '請輸入您的email'
-        error.setAttribute('style','color:red;')
-
-        errorList.appendChild(error);
-        baseInfoFormEmail.appendChild(errorList);
-
-        validate = false
-    }else{
-        let errorList = document.getElementById('error-email')
-        if(errorList){
-            baseInfoFormEmail.removeChild(errorList)
-        }
-        validate = true;
-    }
-
-    //居住地
-    let city = document.forms['base-info-desktop']['city'];
-    if(city.value == ''){
-        let last_errorlist = document.getElementById('error-city');
-        if(last_errorlist){
-            baseInfoFormcity.removeChild(last_errorlist)
-        }
-
-        let errorList = document.createElement('ui');
-        let error = document.createElement('li');
-
-        errorList.setAttribute('id','error-city')
-
-        error.textContent = '請選擇您的居住地'
-        error.setAttribute('style','color:red;')
-
-        errorList.appendChild(error);
-        baseInfoFormcity.appendChild(errorList);
-
-        validate = false
-    }else{
-        let errorList = document.getElementById('error-city')
-        if(errorList){
-            baseInfoFormcity.removeChild(errorList)
-        }
-        validate = true;
-    }
-
-    if(validate){
-        window.location.href = "./setAccount.html"
-    }
-    return validate;
-}
 
 //監聽
 addPhoto.forEach(item=>{
@@ -244,43 +74,180 @@ addPhoto.forEach(item=>{
     },false);
 })
 
-buyerBtn.forEach(item=>{
-    item.addEventListener('click',()=>{
-        item.style.backgroundColor = '#000';
-        item.style.color = '#fff';
-        sellerBtn.forEach(el=>{
-            el.style.backgroundColor = 'transparent';
-            el.style.color = '#000';
-        })
+const progeamAnimation = (container) =>{
+    $(`.login-signal-${container} .buyer-btn`).click(function(){
+        console.log('QQQQ')
+        $(`.login-signal-${container} .buyer-btn`).css({
+            'background-color':'#000',
+            'color':"#fff"
+        });
+        $(`.login-signal-${container} .seller-btn`).css({
+            'background-color':'transparent',
+            'color':"#000"
+        });
+        $(`.login-signal-${container} .buyer`)
+        .show()
+        .addClass('fadIn');
+        $(`.login-signal-${container} .seller`)
+        .hide();
+    })
+    
+    $(`.login-signal-${container} .seller-btn`).click(function(){
+        $(`.login-signal-${container} .seller-btn`).css({
+            'background-color':'#000',
+            'color':"#fff"
+        });
+        $(`.login-signal-${container} .buyer-btn`).css({
+            'background-color':'transparent',
+            'color':"#000"
+        });
+        $(`.login-signal-${container} .seller`)
+        .show()
+        .addClass('fadIn');
+        $(`.login-signal-${container} .buyer`)
+        .hide();
+    })
+}
 
-        buyer.forEach(el=>{
-            el.style.display = 'block'
-            el.classList.add('fadIn')
-        })
-        seller.forEach(el=>{
-            el.style.display = 'none'
-        })
-    },false)
-})
+progeamAnimation('desk')
+progeamAnimation('mobile')
 
-sellerBtn.forEach(item=>{
-    item.addEventListener('click',()=>{
-        item.style.backgroundColor = '#000';
-        item.style.color = '#fff';
-        buyerBtn.forEach(el=>{
-            el.style.backgroundColor = 'transparent';
-            el.style.color = '#000';
-        })
+//表單驗證
+//基本資料
+const baseInfoFormOptions ={
+        rules: { 
+            userPhoto: { required: true ,extension : "png|jpe?g|gif"},
+            name: { required: true },
+            Nickname: { required: true },
+            radioSex: { required:true },
+            birthday: { required: true },
+            email: { required: true , email: true},
+            city: { required: true },
+        },
+        messages: {
+            userPhoto: "請上傳您的大頭貼",
+            name: "請輸入您的真實姓名",
+            Nickname: "請輸入您的暱稱",
+            radioSex : "請選擇性別",
+            birthday: "請輸入您的出生年月日",
+            email: "請輸入正確的email",
+            city: "請選擇您的居住地"
+      },
+        submitHandler:function(form){
+            
+            window.location = "./setAccount.html"
+        }
+}
+const validatorBaseInfoDesktop = $(".login-signal-desk .base-info-form").validate(baseInfoFormOptions);
+const validatorBaseInfoMobile = $(".login-signal-mobile .base-info-form").validate(baseInfoFormOptions);
 
-        buyer.forEach(el=>{
-            el.style.display = 'none'
-        })
-        seller.forEach(el=>{
-            el.style.display = 'block'
-            el.classList.add('fadIn')
-        })
-    },false)
+//電話帳號&驗證碼
+jQuery.validator.addMethod('phone',function(value,element){
+    var tel = /^09|9\d{8}$/;
+    return this.optional(element) || (tel.test(value));
+},"電話號碼格式錯誤!")
+const setAccountOptions = {
+    rules:{
+        telAccount: { required:true, phone:true , maxlength:10 , minlength:9}
+    },
+    messages:{
+        telAccount:"請輸入正確的電話號碼"
+    },
+    submitHandler:function(html){
+        //處理電話號碼為 +8869 ~~~~~~
+        let telAccount = $('.login-signal-desk .set-account-form #telAccount').val();
+        let theTelWillBeSent;
+        if(telAccount.length == 10){
+            theTelWillBeSent = '+886' + telAccount.substring(1);
+        }else{
+            theTelWillBeSent = '+886' + telAccount;
+        }
 
-})
+        $.ajax({
+            url: 'http://127.0.0.4/index.php', // Apache 開的 網域
+            type: 'POST',//可改 get 或 post
+            data: {
+                account: theTelWillBeSent, //前台客戶端輸入的手機號碼
+            },
+            error: function(xhr) {
+            console.log('request 發生錯誤',xhr);
+            },
+            success: function(response) {
+                console.log('成功',response)
+            }
+        });
+    }
+}
+const validateSetAccountDesktop = $('.login-signal-desk .set-account-form').validate(setAccountOptions)
+const validateSetAccountMobile = $('.login-signal-mobile .set-account-form').validate(setAccountOptions)
+//忘記密碼 - 驗證帳號(電話號碼)
+const forgetPasswordOptions = {
+    rules:{
+        telAccount: { required:true, phone:true , maxlength:10 , minlength:9}
+    },
+    messages:{
+        telAccount:"請輸入正確的電話號碼"
+    }
+}
+const validateforgetPasswordDesktop = $('.login-signal-desk .forget-password-form').validate(forgetPasswordOptions)
+const validateforgetPasswordMobile = $('.login-signal-mobile .forget-password-form').validate(forgetPasswordOptions)
+//取得驗證碼
+
+//設定密碼
+const setPasswordOptions ={
+        rules: { 
+            password: { required: true , minlength: 3},
+            comfirmPassword: { required: true , equalTo:"#password" , minlength: 3}
+        },
+        messages: {
+            password: "請輸入密碼",
+            comfirmPassword: "與密碼不同",
+      },
+    submitHandler:function(html){
+        window.location = "./signInSuccess.html"
+    }
+}
+const validateSetPasswordDesktop = $('.login-signal-desk .set-password-form').validate(setPasswordOptions)
+const validateSetPasswordMobile = $('.login-signal-mobile .set-password-form').validate(setPasswordOptions)
+//忘記密碼 - 設定新密碼
+const setNewPasswordOptions ={
+        rules: { 
+            password: { required: true },
+            comfirmPassword: { required: true }
+        },
+        messages: {
+            password: "請輸入密碼",
+            comfirmPassword: "請輸入密碼",
+      },
+        submitHandler:function(form){
+            window.location = "./logIn.html"
+        }
+}
+const validateSetNewPasswordDesktop = $('.login-signal-desk .set-new-password-form').validate(setNewPasswordOptions)
+const validateSetNewPasswordMobile = $('.login-signal-mobile .set-new-password-form').validate(setNewPasswordOptions)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

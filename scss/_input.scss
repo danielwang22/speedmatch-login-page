@@ -34,7 +34,7 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
     font-family: $font-family;
-    border: 0.5px solid #9c95ff;
+    border: 0.5px solid rgba(71, 170, 224, 0.25);
     -webkit-text-fill-color: black;
     box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.055) inset;
     -webkit-box-shadow: 0 0 0px 1000px rgba(0, 0, 0, 0.055) inset;
@@ -94,7 +94,7 @@ select:-webkit-autofill:focus {
 }
 
 //date
-input[type="date"] {
+input[type=date] {
     font-family: $font-family;
     color: black;
     border: .5px solid rgb(116,116,116);
