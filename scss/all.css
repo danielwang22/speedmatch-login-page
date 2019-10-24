@@ -1552,6 +1552,11 @@ select:invalid {
   color: #747474;
 }
 
+#verifyCode-error {
+  position: absolute;
+  bottom: -24px;
+}
+
 .visible-desk {
   display: block;
 }

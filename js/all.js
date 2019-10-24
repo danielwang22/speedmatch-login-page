@@ -1,28 +1,35 @@
 //desktop and up Dom元素
-let addPhoto = document.querySelectorAll('.add-photo');
-let userPhoto = document.querySelectorAll('.user-photo');
 let productContentList = document.querySelector('.product-content-list');
-let buyerBtn = document.querySelectorAll('.buyer-btn');
-let sellerBtn = document.querySelectorAll('.seller-btn');
-let buyer = document.querySelectorAll('.buyer');
-let seller = document.querySelectorAll('.seller');
+let userPhotoImage,baseInfo;
 
 //function
+
+//監聽
+$(`.login-signal-desk .base-info-form .add-photo`).change(()=>{
+    let dom =  $(`.login-signal-desk .base-info-form .add-photo`)[0];
+    updateUserPhoto(dom,'desk')
+});
+$(`.login-signal-mobile .base-info-form .add-photo-mobile`).change(()=>{
+    let dom =  $(`.login-signal-mobile .base-info-form .add-photo-mobile`)[0];
+    updateUserPhoto(dom,'mobile')
+});
+
 //update user photo
-const updateUserPhoto = (item)=>{
+const updateUserPhoto = (item,container)=>{
     let files = item.files;
     if (files && files.length >= 1) {
         convertFile(files)
         .then(data => {
-            console.log(data) // 把編碼後的字串輸出到console
-            userPhoto.forEach(item=>{
-                item.setAttribute('style',`
-                background-image: url(${data});
-                background-position: center center;
-                background-size:cover;
-                height: 90px;
-                width: 90px;
-                `)
+            //console.log(data) // 把編碼後的字串輸出到console
+            userPhotoImage = data;
+            console.log(container)
+            $(`.login-signal-${container} .base-info-form .user-photo`)
+            .css({
+                'background-image': `url(${data})`,
+                'background-position': `center center`,
+                'background-size':`cover`,
+                'height': `90px`,
+                'width': `90px`,
             })
         })
         .catch(err => console.log(err))
@@ -48,7 +55,6 @@ setInterval(()=>{
         offsetX += window.outerWidth;
         if(offsetX >= (window.outerWidth * 3)) offsetX = 0;
         productContentList.setAttribute('style',`left:-${offsetX}px !important`)
-        console.log(`${-window.outerWidth*3}px`)
         if(productContentList.style.left == `0px`){
             $(".step1 div").css('background-color',"black")
             $(".step2 div").css('background-color',"#f8f8f9")
@@ -66,14 +72,7 @@ setInterval(()=>{
         }
     }
 },5000)
-
-//監聽
-addPhoto.forEach(item=>{
-    item.addEventListener('change',()=>{
-        updateUserPhoto(item)
-    },false);
-})
-
+//progeam 的輪播
 const progeamAnimation = (container) =>{
     $(`.login-signal-${container} .buyer-btn`).click(function(){
         console.log('QQQQ')
@@ -114,117 +113,314 @@ progeamAnimation('mobile')
 
 //表單驗證
 //基本資料
-const baseInfoFormOptions ={
-        rules: { 
-            userPhoto: { required: true ,extension : "png|jpe?g|gif"},
-            name: { required: true },
-            Nickname: { required: true },
-            radioSex: { required:true },
-            birthday: { required: true },
-            email: { required: true , email: true},
-            city: { required: true },
-        },
-        messages: {
-            userPhoto: "請上傳您的大頭貼",
-            name: "請輸入您的真實姓名",
-            Nickname: "請輸入您的暱稱",
-            radioSex : "請選擇性別",
-            birthday: "請輸入您的出生年月日",
-            email: "請輸入正確的email",
-            city: "請選擇您的居住地"
-      },
-        submitHandler:function(form){
-            
-            window.location = "./setAccount.html"
-        }
+const createInfoFormOptions = (container)=>{
+    const baseInfoFormOptions = {
+            rules: { 
+                userPhoto: { required: true ,extension : "png|jpg|gif"},
+                name: { required: true },
+                Nickname: { required: true },
+                radioSex: { required:true },
+                birthday: { required: true },
+                email: { required: true , email: true},
+                city: { required: true },
+            },
+            messages: {
+                userPhoto: "請上傳您的大頭貼",
+                name: "請輸入您的真實姓名",
+                Nickname: "請輸入您的暱稱",
+                radioSex : "請選擇性別",
+                birthday: "請輸入您的出生年月日",
+                email: "請輸入正確的email",
+                city: "請選擇您的居住地"
+          },
+            submitHandler:function(form){
+                const baseInfo = {
+                    name: $(`.login-signal-${container} .base-info-form #name`).val(),
+                    Nickname: $(`.login-signal-${container} .base-info-form #Nickname`).val(),
+                    sex:$(`.login-signal-${container} .base-info-form input[name="radioSex"]:checked`).val(),
+                    birthday: $(`.login-signal-${container} .base-info-form #birthday`).val(),
+                    email: $(`.login-signal-${container} .base-info-form #email`).val(),
+                    city: $(`.login-signal-${container} .base-info-form .input-city`).val(),
+                    userPhoto: userPhotoImage,
+                }
+                localStorage.setItem('signInData', JSON.stringify(baseInfo));
+                window.location = "./setAccount.html"
+            }
+    }
+    return baseInfoFormOptions;
 }
-const validatorBaseInfoDesktop = $(".login-signal-desk .base-info-form").validate(baseInfoFormOptions);
-const validatorBaseInfoMobile = $(".login-signal-mobile .base-info-form").validate(baseInfoFormOptions);
+
+const validatorBaseInfoDesktop = $(".login-signal-desk .base-info-form").validate(createInfoFormOptions('desk'));
+const validatorBaseInfoMobile = $(".login-signal-mobile .base-info-form").validate(createInfoFormOptions('mobile'));
 
 //電話帳號&驗證碼
+//傳送驗證碼 desk
+let verificationCode;
+$(`.login-signal-desk .set-account-form .getVerifyBtn`).click(()=>{
+
+    let telAccount = $(`.login-signal-desk .set-account-form #telAccount`).val();
+    let object = JSON.parse(localStorage.getItem('signInData'))
+
+    $.ajax({
+        url: 'http://127.0.0.4/everyBodySample.php', // Apache 開的 網域
+        type: 'get',//可改 get 或 post
+        data: {
+            account: telAccount, //前台客戶端輸入的手機號碼
+            name : object.name
+        },
+        error: function(xhr) {
+        console.log('request 發生錯誤',xhr);
+        },
+        success: function(response) {
+            console.log('成功')
+            let res = JSON.parse(response)
+            console.log(res.verificationCode)
+            verificationCode = res.verificationCode
+            countDownResend()
+        }
+    });
+})
+//傳送驗證碼 mobile
+$(`.login-signal-mobile .set-account-form .getVerifyBtn`).click(()=>{
+
+    let telAccount = $(`.login-signal-mobile .set-account-form #telAccount`).val();
+    let object = JSON.parse(localStorage.getItem('signInData'))
+
+    $.ajax({
+        url: 'http://127.0.0.4/everyBodySample.php', // Apache 開的 網域
+        type: 'get',//可改 get 或 post
+        data: {
+            account: telAccount, //前台客戶端輸入的手機號碼
+            name : object.name
+        },
+        error: function(xhr) {
+        console.log('request 發生錯誤',xhr);
+        },
+        success: function(response) {
+            console.log('成功')
+            let res = JSON.parse(response)
+            console.log(res.verificationCode)
+            verificationCode = res.verificationCode
+            countDownResend()
+        }
+    });
+})
+let Interval = null;
+const countDownResend = ()=>{
+        Interval = setInterval(()=>{
+        verificationCode = null;
+
+        $('.login-signal-desk .set-account-form .countDown-text')
+        .text('時間已到重新傳送代碼.....')
+        .css('color','red')
+
+        $('.login-signal-mobile .set-account-form .countDown-text')
+        .text('時間已到重新傳送代碼.....')
+        .css('color','red')
+
+        setTimeout(()=>{
+
+            $('.login-signal-desk .set-account-form .countDown-text')
+            .text('3分鐘後將會重新傳送代碼')
+            .css('color','rgb(116,116,116)')
+
+            $('.login-signal-mobile .set-account-form .countDown-text')
+            .text('3分鐘後將會重新傳送代碼')
+            .css('color','rgb(116,116,116)')
+
+        },20000)
+    },180000)
+}
+//電話號碼驗證
 jQuery.validator.addMethod('phone',function(value,element){
     var tel = /^09|9\d{8}$/;
     return this.optional(element) || (tel.test(value));
 },"電話號碼格式錯誤!")
-const setAccountOptions = {
-    rules:{
-        telAccount: { required:true, phone:true , maxlength:10 , minlength:9}
-    },
-    messages:{
-        telAccount:"請輸入正確的電話號碼"
-    },
-    submitHandler:function(html){
-        //處理電話號碼為 +8869 ~~~~~~
-        let telAccount = $('.login-signal-desk .set-account-form #telAccount').val();
-        let theTelWillBeSent;
-        if(telAccount.length == 10){
-            theTelWillBeSent = '+886' + telAccount.substring(1);
-        }else{
-            theTelWillBeSent = '+886' + telAccount;
+//驗證碼驗證
+jQuery.validator.addMethod("EqualTverificationCode", function(value, element, param) {
+    return this.optional(element) || value == verificationCode;
+  }, "請確認你的驗證碼是否正確");
+const createAccountOptions = function(container){
+    const setAccountOptions = {
+        rules:{
+            telAccount: { required:true, phone:true , minlength:10 },
+            verifyCode: { required:true , EqualTverificationCode:true, minlength:6}
+        },
+        messages:{
+            telAccount:"請輸入正確的電話號碼"
+        },
+        submitHandler:function(html){
+            clearInterval(Interval);
+            let telAccount = $(`.login-signal-${container} .set-account-form #telAccount`).val();
+
+            let object = JSON.parse(localStorage.getItem('signInData'))
+
+            object.account = telAccount;
+
+            localStorage.setItem('signInData', JSON.stringify(object));
+            window.location = "./setPassword.html"
         }
-
-        $.ajax({
-            url: 'http://127.0.0.4/index.php', // Apache 開的 網域
-            type: 'POST',//可改 get 或 post
-            data: {
-                account: theTelWillBeSent, //前台客戶端輸入的手機號碼
-            },
-            error: function(xhr) {
-            console.log('request 發生錯誤',xhr);
-            },
-            success: function(response) {
-                console.log('成功',response)
-            }
-        });
     }
-}
-const validateSetAccountDesktop = $('.login-signal-desk .set-account-form').validate(setAccountOptions)
-const validateSetAccountMobile = $('.login-signal-mobile .set-account-form').validate(setAccountOptions)
-//忘記密碼 - 驗證帳號(電話號碼)
-const forgetPasswordOptions = {
-    rules:{
-        telAccount: { required:true, phone:true , maxlength:10 , minlength:9}
-    },
-    messages:{
-        telAccount:"請輸入正確的電話號碼"
-    }
-}
-const validateforgetPasswordDesktop = $('.login-signal-desk .forget-password-form').validate(forgetPasswordOptions)
-const validateforgetPasswordMobile = $('.login-signal-mobile .forget-password-form').validate(forgetPasswordOptions)
-//取得驗證碼
 
+    return setAccountOptions;
+}
+const validateSetAccountDesktop = $('.login-signal-desk .set-account-form').validate(createAccountOptions('desk'))
+const validateSetAccountMobile = $('.login-signal-mobile .set-account-form').validate(createAccountOptions('mobile'))
 //設定密碼
-const setPasswordOptions ={
-        rules: { 
-            password: { required: true , minlength: 3},
-            comfirmPassword: { required: true , equalTo:"#password" , minlength: 3}
-        },
-        messages: {
-            password: "請輸入密碼",
-            comfirmPassword: "與密碼不同",
-      },
-    submitHandler:function(html){
-        window.location = "./signInSuccess.html"
+const createSetPasswordOptions = (container)=>{
+    const setPasswordOptions ={
+            rules: { 
+                password: { required: true , minlength: 3},
+                comfirmPassword: { required: true , equalTo:`#password-${container}` , minlength: 3}
+            },
+            messages: {
+                password: "請輸入密碼",
+                comfirmPassword: "與密碼不同",
+          },
+            submitHandler:function(html){
+                let password = $(`.login-signal-${container} .set-password-form input[type=password]`).val();
+
+                let object = JSON.parse(localStorage.getItem('signInData'))
+
+                object.password = password;
+
+                localStorage.setItem('signInData', JSON.stringify(object));
+                
+                $.ajax({
+                    url: 'http://127.0.0.4/signInData.php', // Apache 開的 網域
+                    type: 'post',//可改 get 或 post
+                    data: {
+                        signInData: object,
+                    },
+                    error: function(xhr) {
+                    console.log('request 發生錯誤',xhr);
+                },
+                    success: function(response) {
+                    console.log('寫入成功',response)
+                    //window.location = "./signInSuccess.html"
+                    }
+                });
+        }
     }
+    return setPasswordOptions;
 }
-const validateSetPasswordDesktop = $('.login-signal-desk .set-password-form').validate(setPasswordOptions)
-const validateSetPasswordMobile = $('.login-signal-mobile .set-password-form').validate(setPasswordOptions)
-//忘記密碼 - 設定新密碼
-const setNewPasswordOptions ={
-        rules: { 
-            password: { required: true },
-            comfirmPassword: { required: true }
+
+const validateSetPasswordDesktop = $('.login-signal-desk .set-password-form').validate(createSetPasswordOptions('desk'))
+const validateSetPasswordMobile = $('.login-signal-mobile .set-password-form').validate(createSetPasswordOptions('mobile'))
+//註冊成功
+if(window.location.pathname == '/signInSuccess.html'){
+    let object = JSON.parse(localStorage.getItem('signInData'))
+    $(`.login-signal-desk .signIn-success-form .user-photo`).css({
+        'background-image': `url(${object.userPhoto})`,
+        'background-position': `center center`,
+        'background-size':`cover`,
+        'height': `90px`,
+        'width': `90px`,
+    })
+    $(`.login-signal-desk .signIn-success-form .userAccount`).text(object.account)
+
+    $(`.login-signal-mobile .signIn-success-form .user-photo`).css({
+        'background-image': `url(${object.userPhoto})`,
+        'background-position': `center center`,
+        'background-size':`cover`,
+        'height': `90px`,
+        'width': `90px`,
+    })
+    $(`.login-signal-mobile .signIn-success-form .userAccount`).text(object.account)
+}
+
+//忘記密碼
+//傳送驗證碼 mobile
+$(`.login-signal-desk .forget-password-form .getVerifyBtn`).click(()=>{
+
+    let telAccount = $(`.login-signal-desk .forget-password-form #telAccount`).val();
+    let object = JSON.parse(localStorage.getItem('signInData'))
+
+    $.ajax({
+        url: 'http://127.0.0.4/everyBodySample.php', // Apache 開的 網域
+        type: 'get',//可改 get 或 post
+        data: {
+            account: telAccount, //前台客戶端輸入的手機號碼
+            name : object.name
         },
-        messages: {
-            password: "請輸入密碼",
-            comfirmPassword: "請輸入密碼",
-      },
-        submitHandler:function(form){
+        error: function(xhr) {
+        console.log('request 發生錯誤',xhr);
+        },
+        success: function(response) {
+            console.log('成功')
+            let res = JSON.parse(response)
+            console.log(res.verificationCode)
+            verificationCode = res.verificationCode
+            countDownResend()
+        }
+    });
+})
+//傳送驗證碼 mobile
+$(`.login-signal-mobile .forget-password-form .getVerifyBtn`).click(()=>{
+
+    let telAccount = $(`.login-signal-mobile .forget-password-form #telAccount`).val();
+    let object = JSON.parse(localStorage.getItem('signInData'))
+
+    $.ajax({
+        url: 'http://127.0.0.4/everyBodySample.php', // Apache 開的 網域
+        type: 'get',//可改 get 或 post
+        data: {
+            account: telAccount, //前台客戶端輸入的手機號碼
+            name : object.name
+        },
+        error: function(xhr) {
+        console.log('request 發生錯誤',xhr);
+        },
+        success: function(response) {
+            console.log('成功')
+            let res = JSON.parse(response)
+            console.log(res.verificationCode)
+            verificationCode = res.verificationCode
+            countDownResend()
+        }
+    });
+})
+//忘記密碼 - 驗證帳號(電話號碼)
+const createForgetPasswordOptions = function(container){
+    const ForgetPasswordOptions = {
+        rules:{
+            telAccount: { required:true, phone:true , minlength:10 },
+            verifyCode: { required:true , EqualTverificationCode:true, minlength:6}
+        },
+        messages:{
+            telAccount:"請輸入正確的電話號碼"
+        },
+        submitHandler:function(html){
+            clearInterval(Interval);
+            window.location = './setNewPassword.html'
+        }
+    }
+
+    return ForgetPasswordOptions;
+}
+const validateforgetPasswordDesktop = $('.login-signal-desk .forget-password-form').validate(createForgetPasswordOptions('desk'))
+const validateforgetPasswordMobile = $('.login-signal-mobile .forget-password-form').validate(createForgetPasswordOptions('mobile'))
+//忘記密碼 - 設定新密碼
+const createSetNewPasswordOptions = (container)=>{
+    const setNewPasswordOptions ={
+            rules: { 
+                password: { required: true , minlength: 3},
+                comfirmPassword: { required: true , equalTo:"#password" , minlength: 3}
+            },
+            messages: {
+                password: "請輸入密碼",
+                comfirmPassword: "與密碼不同",
+          },
+        submitHandler:function(html){
             window.location = "./logIn.html"
         }
+    }
+    return setNewPasswordOptions;
 }
-const validateSetNewPasswordDesktop = $('.login-signal-desk .set-new-password-form').validate(setNewPasswordOptions)
-const validateSetNewPasswordMobile = $('.login-signal-mobile .set-new-password-form').validate(setNewPasswordOptions)
+const validateSetNewPasswordDesktop = $('.login-signal-desk .set-new-password-form').validate(createSetNewPasswordOptions('desk'))
+const validateSetNewPasswordMobile = $('.login-signal-mobile .set-new-password-form').validate(createSetNewPasswordOptions('mobile'))
+
+
 
 
 
