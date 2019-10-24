@@ -297,7 +297,7 @@ const createSetPasswordOptions = (container)=>{
                 },
                     success: function(response) {
                     console.log('寫入成功',response)
-                    //window.location = "./signInSuccess.html"
+                    window.location = "./signInSuccess.html"
                     }
                 });
         }
