@@ -312,6 +312,7 @@ const validateSetPasswordDesktop = $('.login-signal-desk .set-password-form').va
 const validateSetPasswordMobile = $('.login-signal-mobile .set-password-form').validate(createSetPasswordOptions('mobile'))
 //註冊成功
     let object = JSON.parse(localStorage.getItem('signInData'))
+    console.log(object);
     $(`.login-signal-desk .signIn-success-form .user-photo`).css({
         'background-image': `url(${object.userPhoto})`,
         'background-position': `center center`,
