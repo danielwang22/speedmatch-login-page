@@ -285,7 +285,7 @@ const createSetPasswordOptions = (container)=>{
                 object.password = password;
 
                 localStorage.setItem('signInData', JSON.stringify(object));
-                
+                location.href = "./signInSuccess.html"
                 $.ajax({
                     url: 'https://shun.inspire-dt.com/signInData.php', // Apache 開的 網域
                     type: 'post',//可改 get 或 post
@@ -297,7 +297,6 @@ const createSetPasswordOptions = (container)=>{
                 },
                     success: function(response) {
                     console.log('寫入成功',response)
-                    location.href = "./signInSuccess.html"
                     }
                 });
         }
