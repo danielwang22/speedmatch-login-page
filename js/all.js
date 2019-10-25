@@ -145,8 +145,13 @@ const createInfoFormOptions = (container)=>{
                     userPhoto: userPhotoImage,
                 }
                 localStorage.setItem('signInData', JSON.stringify(baseInfo));
+
+                setTimeout(
+                    function(){
+                        window.location.href = "./setAccount.html";
+                        }, 1);
                 
-                newWindow.location.href = "./setAccount.html"
+                // newWindow.location.href = 
             }
     }
     return baseInfoFormOptions;
