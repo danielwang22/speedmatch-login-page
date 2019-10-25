@@ -113,6 +113,7 @@ progeamAnimation('mobile')
 
 //表單驗證
 //基本資料
+
 const createInfoFormOptions = (container)=>{
     const baseInfoFormOptions = {
             rules: { 
@@ -144,8 +145,8 @@ const createInfoFormOptions = (container)=>{
                     userPhoto: userPhotoImage,
                 }
                 localStorage.setItem('signInData', JSON.stringify(baseInfo));
-                window.open("./setAccount.html","_self");
-                //location.href = "./setAccount.html"
+                let newWindow = window.open("","_self");
+                newWindow.location.href = "./setAccount.html"
             }
     }
     return baseInfoFormOptions;
@@ -287,7 +288,7 @@ const createSetPasswordOptions = (container)=>{
                 object.password = password;
 
                 localStorage.setItem('signInData', JSON.stringify(object));
-                location.href = "./signInSuccess.html"
+                
                 $.ajax({
                     url: 'https://shun.inspire-dt.com/signInData.php', // Apache 開的 網域
                     type: 'post',//可改 get 或 post
@@ -299,6 +300,7 @@ const createSetPasswordOptions = (container)=>{
                     },
                     success: function(response) {
                     console.log('寫入成功',response)
+                    location.href = "./signInSuccess.html"
                     }
                 });
         }
@@ -309,7 +311,7 @@ const createSetPasswordOptions = (container)=>{
 const validateSetPasswordDesktop = $('.login-signal-desk .set-password-form').validate(createSetPasswordOptions('desk'))
 const validateSetPasswordMobile = $('.login-signal-mobile .set-password-form').validate(createSetPasswordOptions('mobile'))
 //註冊成功
-if(window.location.pathname == '/speedmatch-login-page/signInSuccess.html'){
+if(window.location.pathname == '/signInSuccess.html'){
     let object = JSON.parse(localStorage.getItem('signInData'))
     $(`.login-signal-desk .signIn-success-form .user-photo`).css({
         'background-image': `url(${object.userPhoto})`,
