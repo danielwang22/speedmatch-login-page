@@ -916,6 +916,12 @@ body {
   border: 0;
 }
 
+.base-info-form .user-photo #update-photo-error {
+  position: relative;
+  right: -107px;
+  bottom: -29px;
+}
+
 .base-info-form .user-photo #update-photo-mobile-error {
   position: relative;
   right: -107px;

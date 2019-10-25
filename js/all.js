@@ -116,7 +116,7 @@ progeamAnimation('mobile')
 const createInfoFormOptions = (container)=>{
     const baseInfoFormOptions = {
             rules: { 
-                userPhoto: { required: true ,extension : "png|jpg|gif"},
+                userPhoto: { required: true },
                 name: { required: true },
                 Nickname: { required: true },
                 radioSex: { required:true },
