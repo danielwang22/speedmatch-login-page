@@ -149,7 +149,7 @@ const createInfoFormOptions = (container)=>{
                 setTimeout(
                     function(){
                         window.location.href = "./setAccount.html";
-                        }, 1);
+                        }, 1000);
                 
                 // newWindow.location.href = 
             }
