@@ -162,7 +162,7 @@ $(`.login-signal-desk .set-account-form .getVerifyBtn`).click(()=>{
     let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
-        url: 'http://127.0.0.4/everyBodySample.php', // Apache 開的 網域
+        url: 'http://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
         data: {
             account: telAccount, //前台客戶端輸入的手機號碼
@@ -187,7 +187,7 @@ $(`.login-signal-mobile .set-account-form .getVerifyBtn`).click(()=>{
     let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
-        url: 'http://127.0.0.4/everyBodySample.php', // Apache 開的 網域
+        url: 'http://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
         data: {
             account: telAccount, //前台客戶端輸入的手機號碼
@@ -287,7 +287,7 @@ const createSetPasswordOptions = (container)=>{
                 localStorage.setItem('signInData', JSON.stringify(object));
                 
                 $.ajax({
-                    url: 'http://127.0.0.4/signInData.php', // Apache 開的 網域
+                    url: 'http://shun.inspire-dt.com/signInData.php', // Apache 開的 網域
                     type: 'post',//可改 get 或 post
                     data: {
                         signInData: object,

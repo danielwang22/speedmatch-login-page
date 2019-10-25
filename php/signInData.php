@@ -5,7 +5,7 @@
     header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
     header('Access-Control-Allow-Headers: X-Requested-With, Content-Type, Accept');
 
-    $myFile = "../json/signIn.json";
+    $myFile = "http://shun.inspire-dt.com/signIn.json";
 
     if($_POST['signInData']){
         //password
