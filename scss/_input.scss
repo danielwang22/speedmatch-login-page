@@ -100,6 +100,9 @@ input[type=date] {
     border: .5px solid rgb(116,116,116);
     background-color: #fff;
     -webkit-appearance:none;
+    @include breakpoint(sm){
+        background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
+    }
     &::-webkit-datetime-edit-month-field {
         color: black;
     }
@@ -114,13 +117,18 @@ input[type=date] {
         color: rgb(116,116,116);
         width: 100%;
     }
+    &:invalid::before { 
+        content: attr(data-placeholder);
+        color: rgb(116,116,116);
+        width: 100%;
+    }
     &:focus{
         color: #000;
     }
     &:focus::before,&:valid::before { 
         display: none 
     }
-    &:invalid::-webkit-datetime-edit{
+    &::-webkit-datetime-edit{
         background-color: #fff;
         color: black;
     }
