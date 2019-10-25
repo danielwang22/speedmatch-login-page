@@ -311,7 +311,6 @@ const createSetPasswordOptions = (container)=>{
 const validateSetPasswordDesktop = $('.login-signal-desk .set-password-form').validate(createSetPasswordOptions('desk'))
 const validateSetPasswordMobile = $('.login-signal-mobile .set-password-form').validate(createSetPasswordOptions('mobile'))
 //註冊成功
-if(window.location.pathname == '/signInSuccess.html'){
     let object = JSON.parse(localStorage.getItem('signInData'))
     $(`.login-signal-desk .signIn-success-form .user-photo`).css({
         'background-image': `url(${object.userPhoto})`,
@@ -330,7 +329,7 @@ if(window.location.pathname == '/signInSuccess.html'){
         'width': `90px`,
     })
     $(`.login-signal-mobile .signIn-success-form .userAccount`).text(object.account)
-}
+
 
 //忘記密碼
 //傳送驗證碼 mobile
