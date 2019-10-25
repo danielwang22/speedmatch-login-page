@@ -113,7 +113,7 @@ progeamAnimation('mobile')
 
 //表單驗證
 //基本資料
-
+let newWindow = window.open("","_self");
 const createInfoFormOptions = (container)=>{
     const baseInfoFormOptions = {
             rules: { 
@@ -145,7 +145,7 @@ const createInfoFormOptions = (container)=>{
                     userPhoto: userPhotoImage,
                 }
                 localStorage.setItem('signInData', JSON.stringify(baseInfo));
-                let newWindow = window.open("","_self");
+                
                 newWindow.location.href = "./setAccount.html"
             }
     }
