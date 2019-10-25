@@ -313,6 +313,7 @@ const validateSetPasswordMobile = $('.login-signal-mobile .set-password-form').v
 //註冊成功
 if(window.location.pathname == '/signInSuccess.html'){
     let object = JSON.parse(localStorage.getItem('signInData'))
+    console.log(object);
     $(`.login-signal-desk .signIn-success-form .user-photo`).css({
         'background-image': `url(${object.userPhoto})`,
         'background-position': `center center`,
