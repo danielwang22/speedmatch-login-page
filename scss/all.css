@@ -1510,6 +1510,8 @@ input[type=date] {
   color: black;
   border: 0.5px solid #747474;
   background-color: #fff;
+  -webkit-appearance:none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 input[type=date]::-webkit-datetime-edit-month-field {
@@ -1547,7 +1549,8 @@ select {
   font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   background-color: #fff;
   -webkit-appearance:none;
-  background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px;
 }
 
 select:invalid {
