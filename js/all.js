@@ -144,7 +144,7 @@ const createInfoFormOptions = (container)=>{
                     userPhoto: userPhotoImage,
                 }
                 localStorage.setItem('signInData', JSON.stringify(baseInfo));
-                window.location = "./setAccount.html"
+                location.href = "./setAccount.html"
             }
     }
     return baseInfoFormOptions;
@@ -162,7 +162,7 @@ $(`.login-signal-desk .set-account-form .getVerifyBtn`).click(()=>{
     let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
-        url: 'http://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
+        url: 'https://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
         data: {
             account: telAccount, //前台客戶端輸入的手機號碼
@@ -187,7 +187,7 @@ $(`.login-signal-mobile .set-account-form .getVerifyBtn`).click(()=>{
     let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
-        url: 'http://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
+        url: 'https://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
         data: {
             account: telAccount, //前台客戶端輸入的手機號碼
@@ -258,7 +258,7 @@ const createAccountOptions = function(container){
             object.account = telAccount;
 
             localStorage.setItem('signInData', JSON.stringify(object));
-            window.location = "./setPassword.html"
+            location.href = "./setPassword.html"
         }
     }
 
@@ -287,7 +287,7 @@ const createSetPasswordOptions = (container)=>{
                 localStorage.setItem('signInData', JSON.stringify(object));
                 
                 $.ajax({
-                    url: 'http://shun.inspire-dt.com/signInData.php', // Apache 開的 網域
+                    url: 'https://shun.inspire-dt.com/signInData.php', // Apache 開的 網域
                     type: 'post',//可改 get 或 post
                     data: {
                         signInData: object,
@@ -297,7 +297,7 @@ const createSetPasswordOptions = (container)=>{
                 },
                     success: function(response) {
                     console.log('寫入成功',response)
-                    window.location = "./signInSuccess.html"
+                    location.href = "./signInSuccess.html"
                     }
                 });
         }
@@ -337,7 +337,7 @@ $(`.login-signal-desk .forget-password-form .getVerifyBtn`).click(()=>{
     let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
-        url: 'http://127.0.0.4/everyBodySample.php', // Apache 開的 網域
+        url: 'https://127.0.0.4/everyBodySample.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
         data: {
             account: telAccount, //前台客戶端輸入的手機號碼
@@ -362,7 +362,7 @@ $(`.login-signal-mobile .forget-password-form .getVerifyBtn`).click(()=>{
     let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
-        url: 'http://127.0.0.4/everyBodySample.php', // Apache 開的 網域
+        url: 'https://127.0.0.4/everyBodySample.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
         data: {
             account: telAccount, //前台客戶端輸入的手機號碼
@@ -392,7 +392,7 @@ const createForgetPasswordOptions = function(container){
         },
         submitHandler:function(html){
             clearInterval(Interval);
-            window.location = './setNewPassword.html'
+            location.href = './setNewPassword.html'
         }
     }
 
@@ -412,7 +412,7 @@ const createSetNewPasswordOptions = (container)=>{
                 comfirmPassword: "與密碼不同",
           },
         submitHandler:function(html){
-            window.location = "./logIn.html"
+            location.href = "./logIn.html"
         }
     }
     return setNewPasswordOptions;
