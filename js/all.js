@@ -260,8 +260,8 @@ const createAccountOptions = function(container){
             object.account = telAccount;
 
             localStorage.setItem('signInData', JSON.stringify(object));
-            window.open("./setPassword.html","_self");
-            location.href = "./setPassword.html"
+            
+            newWindow.location.href = "./setPassword.html"
         }
     }
 
@@ -300,7 +300,8 @@ const createSetPasswordOptions = (container)=>{
                     },
                     success: function(response) {
                     console.log('寫入成功',response)
-                    location.href = "./signInSuccess.html"
+                    
+                    newWindow.location.href = "./signInSuccess.html"
                     }
                 });
         }
@@ -313,7 +314,6 @@ const validateSetPasswordMobile = $('.login-signal-mobile .set-password-form').v
 //註冊成功
 if(window.location.pathname == '/signInSuccess.html'){
     let object = JSON.parse(localStorage.getItem('signInData'))
-    console.log(object);
     $(`.login-signal-desk .signIn-success-form .user-photo`).css({
         'background-image': `url(${object.userPhoto})`,
         'background-position': `center center`,
@@ -396,7 +396,7 @@ const createForgetPasswordOptions = function(container){
         },
         submitHandler:function(html){
             clearInterval(Interval);
-            location.href = './setNewPassword.html'
+            newWindow.location.href = './setNewPassword.html'
         }
     }
 
@@ -416,7 +416,7 @@ const createSetNewPasswordOptions = (container)=>{
                 comfirmPassword: "與密碼不同",
           },
         submitHandler:function(html){
-            location.href = "./logIn.html"
+            newWindow.location.href = "./logIn.html"
         }
     }
     return setNewPasswordOptions;
