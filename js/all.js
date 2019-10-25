@@ -144,7 +144,8 @@ const createInfoFormOptions = (container)=>{
                     userPhoto: userPhotoImage,
                 }
                 localStorage.setItem('signInData', JSON.stringify(baseInfo));
-                location.href = "./setAccount.html"
+                window.open("./setAccount.html","_self");
+                //location.href = "./setAccount.html"
             }
     }
     return baseInfoFormOptions;
@@ -258,6 +259,7 @@ const createAccountOptions = function(container){
             object.account = telAccount;
 
             localStorage.setItem('signInData', JSON.stringify(object));
+            window.open("./setPassword.html","_self");
             location.href = "./setPassword.html"
         }
     }
@@ -293,8 +295,8 @@ const createSetPasswordOptions = (container)=>{
                         signInData: object,
                     },
                     error: function(xhr) {
-                    console.log('request 發生錯誤',xhr);
-                },
+                        console.log('request 發生錯誤',xhr);
+                    },
                     success: function(response) {
                     console.log('寫入成功',response)
                     location.href = "./signInSuccess.html"
