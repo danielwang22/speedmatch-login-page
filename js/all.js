@@ -10,7 +10,6 @@ const updateUserPhoto = (item)=>{
     if (files && files.length >= 1) {
         convertFile(files)
         .then(data => {
-            //console.log(data) // 把編碼後的字串輸出到console
             userPhotoImage = data;
             $(`.login-signal .base-info-form .user-photo`)
             .css({
@@ -135,7 +134,6 @@ const createInfoFormOptions = ()=>{
                     userPhoto: userPhotoImage,
                 }
 
-                localStorage.setItem('signInData', JSON.stringify(baseInfo));
 
                 $.ajax({
                     url: 'https://shun.inspire-dt.com/baseInfo.php', // Apache 開的 網域
@@ -184,6 +182,9 @@ $(`.login-signal .set-account-form .getVerifyBtn`).click(()=>{
     $.ajax({
         url: 'https://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
+        xhrFields:{
+            withCredentials:true
+        },
         data: {
             account: telAccount, //前台客戶端輸入的手機號碼
             name : object.name
@@ -248,10 +249,6 @@ const createAccountOptions = () => {
 
             let telAccount = $(`.login-signal .set-account-form #telAccount`).val();
 
-            let object = JSON.parse(localStorage.getItem('signInData'))
-            object.account = telAccount;
-            localStorage.setItem('signInData', JSON.stringify(object));
-
             $.ajax({
                 url: 'https://shun.inspire-dt.com/setAccount.php', // Apache 開的 網域
                 type: 'post',//可改 get 或 post
@@ -294,12 +291,6 @@ const createSetPasswordOptions = ()=>{
             submitHandler:function(html){
                 let password = $(`.login-signal .set-password-form input[type=password]`).val();
 
-                let object = JSON.parse(localStorage.getItem('signInData'))
-
-                object.password = password;
-
-                localStorage.setItem('signInData', JSON.stringify(object));
-                
                 $.ajax({
                     url: 'https://shun.inspire-dt.com/MixAllResults.php', // Apache 開的 網域
                     type: 'post',//可改 get 或 post
@@ -362,14 +353,15 @@ if(window.location.pathname == '/speedmatch-login-page/signInSuccess.html'){
 $(`.login-signal .forget-password-form .getVerifyBtn`).click(()=>{
 
     let telAccount = $(`.login-signal .forget-password-form #telAccount`).val();
-    let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
         url: 'https://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
         data: {
             account: telAccount, //前台客戶端輸入的手機號碼
-            name : object.name
+        },
+        xhrFields:{
+            withCredentials:true
         },
         error: function(xhr) {
         console.log('發生錯誤');
