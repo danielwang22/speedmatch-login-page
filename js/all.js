@@ -168,7 +168,6 @@ const createInfoFormOptions = ()=>{
 
 $(document).ready(function(){
     const validatorBaseInfo = $(".login-signal .base-info-form").validate(createInfoFormOptions());
-    init();
 });
 
 
@@ -210,7 +209,6 @@ $(document).ready(function(){
             }
         });
     });
-    init();
 });
 
 //倒數計時文字
