@@ -177,8 +177,10 @@ $(document).ready(function(){
 //傳送驗證碼 desk
 let verificationCode;
 $(document).ready(function(){
-    $(`.login-signal .set-account-form .getVerifyBtn`).click(()=>{
+    $(`.login-signal .set-account-form .getVerifyBtn`).click((e)=>{
 
+        e.preventDefault();
+        
         let telAccount = $(`.login-signal .set-account-form #telAccount`).val();
         let object = JSON.parse(localStorage.getItem('signInData'))
     
