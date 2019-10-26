@@ -343,7 +343,7 @@ $(`.login-signal .forget-password-form .getVerifyBtn`).click(()=>{
     let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
-        url: 'https://127.0.0.4/everyBodySample.php', // Apache 開的 網域
+        url: 'https://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
         data: {
             account: telAccount, //前台客戶端輸入的手機號碼
