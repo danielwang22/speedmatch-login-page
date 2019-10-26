@@ -17,6 +17,8 @@
         width: 100%;
         height: auto;
         padding: 20px;
+        top: 0;
+        right: 0;
     }
 }
 @mixin progress($step1-bg,$step1-fontColor,$step2-bg,$step2-fontColor,$step3-bg,$step3-fontColor,$step4-bg,$step4-fontColor){

@@ -489,20 +489,34 @@ body {
   font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
-.login-signal-desk .title-container {
+@media only screen and (max-width: 768px) {
+  .login-signal {
+    width: 100vw;
+    height: auto;
+  }
+}
+
+.login-signal .title-container {
   position: relative;
   padding-left: 145px;
   padding-right: 145px;
 }
 
 @media only screen and (max-width: 1280px) and (min-width: 769px) {
-  .login-signal-desk .title-container {
+  .login-signal .title-container {
     padding-left: 80px;
     padding-right: 80px;
   }
 }
 
-.login-signal-desk .title-container .title {
+@media only screen and (max-width: 768px) {
+  .login-signal .title-container {
+    position: relative;
+    padding: 0;
+  }
+}
+
+.login-signal .title-container .title {
   margin-top: 40px;
   margin-bottom: 52px;
   padding-top: 52px;
@@ -510,17 +524,29 @@ body {
 }
 
 @media only screen and (max-width: 1280px) and (min-width: 769px) {
-  .login-signal-desk .title-container .title {
+  .login-signal .title-container .title {
     padding-right: 480px;
   }
 }
 
-.login-signal-desk .main-background {
+@media only screen and (max-width: 768px) {
+  .login-signal .title-container .title {
+    display: none;
+  }
+}
+
+.login-signal .main-background {
   height: 680px;
   max-height: 680px;
 }
 
-.login-signal-desk .main-background .background {
+@media only screen and (max-width: 768px) {
+  .login-signal .main-background {
+    display: none;
+  }
+}
+
+.login-signal .main-background .background {
   background-image: url(../assets/background/sign-up-background.jpg);
   background-position: center center;
   background-size: cover;
@@ -528,7 +554,7 @@ body {
   width: 100%;
 }
 
-.login-signal-desk .program-content {
+.login-signal .program-content {
   min-height: auto;
   padding: 60px;
   background-color: #f8f8f9;
@@ -536,65 +562,148 @@ body {
 }
 
 @media only screen and (max-width: 992px) and (min-width: 769px) {
-  .login-signal-desk .program-content {
+  .login-signal .program-content {
     padding: 60px 30px;
   }
 }
 
-.login-signal-desk .program-content .btn-group {
+@media only screen and (max-width: 768px) {
+  .login-signal .program-content {
+    height: auto;
+    padding: 20px;
+    background-color: #f8f8f9;
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .login-signal .program-content .program-title {
+    margin-top: 5px !important;
+    margin-bottom: 20px;
+  }
+}
+
+.login-signal .program-content .btn-group {
   margin-right: auto;
   margin-left: auto;
   margin-bottom: 80px;
 }
 
-.login-signal-desk .program-content .btn-group .buyer-btn, .login-signal-desk .program-content .btn-group .seller-btn {
+@media only screen and (max-width: 768px) {
+  .login-signal .program-content .btn-group {
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+  }
+}
+
+.login-signal .program-content .btn-group .buyer-btn, .login-signal .program-content .btn-group .seller-btn {
   border: 2px solid #000;
   padding: 18px 90px;
   cursor: pointer;
 }
 
-.login-signal-desk .program-content .btn-group .buyer-btn {
+@media only screen and (max-width: 768px) {
+  .login-signal .program-content .btn-group .buyer-btn, .login-signal .program-content .btn-group .seller-btn {
+    width: 50%;
+    font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    border: none;
+    border-bottom: 2px solid #000;
+    padding: 16px;
+  }
+}
+
+.login-signal .program-content .btn-group .buyer-btn {
   margin-right: 45px;
   color: #f8f8f9;
   background-color: #000;
 }
 
-.login-signal-desk .program-content .btn-group .buyer-btn:hover {
+@media only screen and (max-width: 768px) {
+  .login-signal .program-content .btn-group .buyer-btn {
+    margin-right: 0;
+  }
+}
+
+.login-signal .program-content .btn-group .buyer-btn:hover {
   background-color: #1a1a1a;
 }
 
-.login-signal-desk .program-content .btn-group .seller-btn {
+.login-signal .program-content .btn-group .seller-btn {
   color: #000;
   background-color: #f8f8f9;
 }
 
-.login-signal-desk .program-content .btn-group .seller-btn:hover {
+.login-signal .program-content .btn-group .seller-btn:hover {
   color: #f8f8f9;
   background-color: #000;
 }
 
-.login-signal-desk .program-content .program-info {
+.login-signal .program-content .program-info {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: 40px auto;
 }
 
-.login-signal-desk .program-content .market-comparison-table {
+@media only screen and (max-width: 768px) {
+  .login-signal .program-content .program-info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+.login-signal .program-content .program-info .process-image {
+  height: 500px;
+}
+
+@media only screen and (max-width: 768px) {
+  .login-signal .program-content .program-info .process-image {
+    height: 350px;
+  }
+}
+
+.login-signal .program-content .market-comparison-table {
   height: 350px;
   margin-left: 10%;
 }
 
 @media only screen and (max-width: 992px) and (min-width: 769px) {
-  .login-signal-desk .program-content .market-comparison-table {
+  .login-signal .program-content .market-comparison-table {
     margin-left: 5%;
   }
 }
 
-.login-signal-desk .program-content .market-comparison-table .table-item {
+@media only screen and (max-width: 768px) {
+  .login-signal .program-content .market-comparison-table {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 0;
+  }
+}
+
+.login-signal .program-content .market-comparison-table .table-item {
   margin: 0 3.75px;
   padding: 0 20px;
   position: relative;
 }
 
-.login-signal-desk .program-content .market-comparison-table .table-item div {
+@media only screen and (max-width: 768px) {
+  .login-signal .program-content .market-comparison-table .table-item {
+    padding: 0 8px;
+  }
+}
+
+.login-signal .program-content .market-comparison-table .table-item div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -610,139 +719,73 @@ body {
           align-items: center;
 }
 
-.login-signal-desk .product-content {
+.login-signal .product-content {
   padding: 145px;
   padding-top: 40px;
   padding-bottom: 0;
 }
 
 @media only screen and (max-width: 1280px) and (min-width: 769px) {
-  .login-signal-desk .product-content {
+  .login-signal .product-content {
     padding: 80px;
     padding-top: 40px;
     padding-bottom: 0;
   }
 }
 
-.login-signal-desk .product-content .content-title {
+@media only screen and (max-width: 768px) {
+  .login-signal .product-content {
+    display: none;
+  }
+}
+
+.login-signal .product-content .content-title {
   margin-top: 52px;
   margin-bottom: 52px;
   padding-left: 32px;
 }
 
-.login-signal-desk .product-content .content-box {
+.login-signal .product-content .content-box {
   padding-left: 32px;
 }
 
-.login-signal-desk .product-content .content-box-icon {
+.login-signal .product-content .content-box-icon {
   margin-bottom: 32px;
 }
 
-.login-signal-desk .product-content .content-box-title {
+.login-signal .product-content .content-box-title {
   margin-bottom: 20px;
 }
 
-.login-signal-desk .product-content .content-box-info {
+.login-signal .product-content .content-box-info {
   margin-bottom: 88px;
 }
 
-.login-signal-desk footer {
-  height: 75px;
-  min-height: 75px;
-  background-color: #000000;
+.login-signal .mobile-product-introduction {
+  display: none;
 }
 
-.login-signal-mobile {
-  width: 100vw;
-  height: auto;
+@media only screen and (max-width: 768px) {
+  .login-signal .mobile-product-introduction {
+    display: block;
+  }
 }
 
-.login-signal-mobile .title {
+.login-signal .mobile-product-introduction .title {
   text-align: center;
   padding-top: 24px;
   padding-bottom: 24px;
   margin-bottom: 12px;
 }
 
-.login-signal-mobile .program-content {
-  height: auto;
-  padding: 20px;
-  background-color: #f8f8f9;
-  display: block;
-}
-
-.login-signal-mobile .program-content .program-title {
-  margin-top: 5px !important;
-  margin-bottom: 20px;
-}
-
-.login-signal-mobile .program-content .program-info {
-  margin-top: 20px;
-  margin-bottom: 48px;
-}
-
-.login-signal-mobile .program-content .market-comparison-table {
-  height: 300px;
-  margin-top: 28px;
-}
-
-.login-signal-mobile .program-content .market-comparison-table .table-item {
-  margin: 0 3.75px;
-  padding: 0 8px;
-  position: relative;
-}
-
-.login-signal-mobile .program-content .market-comparison-table .table-item div {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.login-signal-mobile .btn-group {
-  margin-top: 20px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.login-signal-mobile .btn-group .buyer-btn, .login-signal-mobile .btn-group .seller-btn {
-  font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  border: none;
-  border-bottom: 2px solid #000;
-  padding: 16px 70px;
-}
-
-.login-signal-mobile .btn-group .buyer-btn {
-  color: #ffffff;
-  background-color: #000;
-}
-
-.login-signal-mobile .btn-group .buyer-btn:hover {
-  background-color: #1a1a1a;
-}
-
-.login-signal-mobile .btn-group .seller-btn {
-  color: #000;
-  background-color: #ffffff;
-}
-
-.login-signal-mobile .product-content {
+.login-signal .mobile-product-introduction .product-content-mobile {
   position: relative;
   width: 100vw;
   height: 260px;
   overflow-x: hidden;
 }
 
-.login-signal-mobile .product-content-list {
+.login-signal .mobile-product-introduction .product-content-mobile-list {
   position: absolute;
   top: 0;
   left: 0;
@@ -751,37 +794,37 @@ body {
   transition: .5s ease-in-out;
 }
 
-.login-signal-mobile .product-content-list .content-box {
+.login-signal .mobile-product-introduction .product-content-mobile-list .content-box {
   position: relative;
 }
 
-.login-signal-mobile .product-content-list .content-box-title, .login-signal-mobile .product-content-list .content-box-info {
+.login-signal .mobile-product-introduction .product-content-mobile-list .content-box-title, .login-signal .mobile-product-introduction .product-content-mobile-list .content-box-info {
   text-align: center;
 }
 
-.login-signal-mobile .product-content-list .content-box-title {
+.login-signal .mobile-product-introduction .product-content-mobile-list .content-box-title {
   margin-bottom: 12px;
 }
 
-.login-signal-mobile .product-content-list .content-box-info {
+.login-signal .mobile-product-introduction .product-content-mobile-list .content-box-info {
   margin-bottom: 18px;
 }
 
-.login-signal-mobile .product-content-pagination {
+.login-signal .mobile-product-introduction .product-content-mobile-pagination {
   width: 100vw;
   height: auto;
   margin-bottom: 12px;
 }
 
-.login-signal-mobile .product-content-pagination .pagination-step {
+.login-signal .mobile-product-introduction .product-content-mobile-pagination .pagination-step {
   padding: 2px;
 }
 
-.login-signal-mobile .product-content-pagination .pagination-step div {
+.login-signal .mobile-product-introduction .product-content-mobile-pagination .pagination-step div {
   padding: 6px;
 }
 
-.login-signal-mobile footer {
+.login-signal footer {
   height: 75px;
   min-height: 75px;
   background-color: #000000;
@@ -802,6 +845,8 @@ body {
     width: 100%;
     height: auto;
     padding: 20px;
+    top: 0;
+    right: 0;
   }
 }
 
@@ -963,6 +1008,8 @@ body {
     width: 100%;
     height: auto;
     padding: 20px;
+    top: 0;
+    right: 0;
   }
 }
 
@@ -1076,6 +1123,8 @@ body {
     width: 100%;
     height: auto;
     padding: 20px;
+    top: 0;
+    right: 0;
   }
 }
 
@@ -1189,6 +1238,8 @@ body {
     width: 100%;
     height: auto;
     padding: 20px;
+    top: 0;
+    right: 0;
   }
 }
 
@@ -1317,6 +1368,8 @@ body {
     width: 100%;
     height: auto;
     padding: 20px;
+    top: 0;
+    right: 0;
   }
 }
 
@@ -1348,6 +1401,8 @@ body {
     width: 100%;
     height: auto;
     padding: 20px;
+    top: 0;
+    right: 0;
   }
 }
 
@@ -1378,6 +1433,8 @@ body {
     width: 100%;
     height: auto;
     padding: 20px;
+    top: 0;
+    right: 0;
   }
 }
 
@@ -1391,12 +1448,6 @@ body {
 
 .set-new-password-form a {
   width: 100%;
-}
-
-button[type="submit"] {
-  width: 100%;
-  margin-top: 32px;
-  margin-bottom: 12px;
 }
 
 .form-group {
@@ -1824,6 +1875,12 @@ select:invalid {
 
 .btn:hover {
   background-color: #1a1a1a;
+}
+
+button[type="submit"] {
+  width: 100%;
+  margin-top: 32px;
+  margin-bottom: 12px;
 }
 
 .table-shadow {

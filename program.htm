@@ -9,7 +9,57 @@
 </head>
 <body>
     <!-- desk and top version -->
-    <div class="login-signal-desk visible-desk">
+    <div class="login-signal">
+        <!-- 手機板模式下產品內容輪播 -->
+        <div class="mobile-product-introduction">
+            <div class="title font-thrid font-weight-bold">
+                成為車友，輕鬆交朋友
+            </div>
+            <div class="product-content-mobile">
+                <div class="product-content-mobile-list d-flex">
+                    <!-- 內文功能介紹1 -->
+                    <div id="content-box1" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
+                        <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
+                        <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">買</span>到價格車況一致的車</div>
+                        <div class="content-box-info grid-10 font-fifth">
+                            在價格最漂亮的時機出手！
+                            專屬為您服務，省時省事。
+                        </div>
+                    </div>
+                    <!-- 內文功能介紹2 -->
+                    <div id="content-box2" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
+                        <img src="./assets/feature/icon_car-maintenance.svg" onerror="this.src='car-maintenance.png'" height="80px" class="content-box-icon">
+                        <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">養</span>車保養拒當冤大頭</div>
+                        <div class="content-box-info grid-10 font-fifth">
+                            設定您的座駕，搜尋附近專屬您的
+                            板金服務、烤漆服務、保養服務、
+                            汽車美容、升級改裝、更換零件。
+                    </div>
+                    </div>
+                    <!-- 內文功能介紹3 -->
+                    <div id="content-box3" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
+                        <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
+                        <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">賣</span>出一個漂亮價格</div>
+                        <div class="content-box-info grid-10 font-fifth">
+                            您的車其實比您想像的有價值，讓
+                            您勇敢拒絕低價回收，專屬為您服
+                            務，省時省事。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-content-mobile-pagination d-flex justify-content-center postion-relative">
+                <div class="pagination-step step1">
+                    <div class="border-light circle-rounded bg-black"></div>
+                </div>
+                <div class="pagination-step step2">
+                    <div class="border-light circle-rounded"></div>
+                </div>
+                <div class="pagination-step step3">
+                    <div class="border-light circle-rounded"></div>
+                </div>
+            </div>
+        </div>
         <!-- 頁面大標 -->
         <div class="title-container">
             <div class="title font-primary">
@@ -29,7 +79,7 @@
                         最有保障的買賣過程
                 </p>
                 <div class="program-info d-flex justify-content-center align-items-center">
-                    <img src="./assets/__buy procedure.svg" height="500px" alt="buy procedure.svg">
+                    <img class="process-image" src="./assets/__buy procedure.svg" alt="buy procedure.svg">
                     <div class="market-comparison-table d-flex justify-content-around align-items-start">
                         <div class="table-item d-flex flex-column">
                             <div class="grid"></div>
@@ -68,7 +118,7 @@
                         最有保障的買賣過程
                 </p>
                 <div class="program-info d-flex justify-content-center align-items-center">
-                    <img src="./assets/__sell procedure.svg" height="500px" alt="buy procedure.svg">
+                    <img class="process-image" src="./assets/__sell procedure.svg" alt="buy procedure.svg">
                     <div class="market-comparison-table d-flex justify-content-around align-items-start">
                         <div class="table-item d-flex flex-column">
                             <div class="grid"></div>
@@ -142,150 +192,6 @@
                 </div>
             </div>
         </div>
-        <footer class="footer-bg"></footer>
-    </div>
-
-    <!-- mobile version -->
-    <div class="login-signal-mobile visible-mobile">
-        <div class="title font-thrid font-weight-bold">
-            成為車友，輕鬆交朋友
-        </div>
-        <div class="product-content">
-            <div class="product-content-list d-flex">
-                <!-- 內文功能介紹1 -->
-                <div id="content-box1" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
-                    <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
-                    <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">買</span>到價格車況一致的車</div>
-                    <div class="content-box-info grid-10 font-fifth">
-                        在價格最漂亮的時機出手！
-                        專屬為您服務，省時省事。
-                    </div>
-                </div>
-                <!-- 內文功能介紹2 -->
-                <div id="content-box2" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
-                    <img src="./assets/feature/icon_car-maintenance.svg" onerror="this.src='car-maintenance.png'" height="80px" class="content-box-icon">
-                    <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">養</span>車保養拒當冤大頭</div>
-                    <div class="content-box-info grid-10 font-fifth">
-                        設定您的座駕，搜尋附近專屬您的
-                        板金服務、烤漆服務、保養服務、
-                        汽車美容、升級改裝、更換零件。
-                </div>
-                </div>
-                <!-- 內文功能介紹3 -->
-                <div id="content-box3" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
-                    <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
-                    <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">賣</span>出一個漂亮價格</div>
-                    <div class="content-box-info grid-10 font-fifth">
-                        您的車其實比您想像的有價值，讓
-                        您勇敢拒絕低價回收，專屬為您服
-                        務，省時省事。
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="product-content-pagination d-flex justify-content-center postion-relative">
-            <div class="pagination-step step1">
-                <div class="border-light circle-rounded bg-black"></div>
-            </div>
-            <div class="pagination-step step2">
-                <div class="border-light circle-rounded"></div>
-            </div>
-            <div class="pagination-step step3">
-                <div class="border-light circle-rounded"></div>
-            </div>
-        </div>
-        <!-- 頁面主背景圖 -->
-        <div class="btn-group d-flex justify-content-center">
-            <button class="buyer-btn rounded-0" type="button">買車</button>
-            <button class="seller-btn rounded-0" type="button">賣車</button>
-        </div>
-        <div class="program-content">
-
-            <div class="buyer" style="display: block;">
-                <p class="program-title text-center font-fifth">
-                    輕鬆簡單的流程，我們的服務提供您<br>
-                        最有保障的買賣過程
-                </p>
-                <div class="program-info d-flex flex-column justify-content-between align-items-center">
-                    <img src="./assets/__buy procedure.svg" height="288px" alt="buy procedure.svg">
-                    <div class="market-comparison-table d-flex justify-content-around align-items-start">
-                        <div class="table-item d-flex flex-column">
-                            <div class="grid"></div>
-                            <div class="grid"><span>車況透明</span></div>
-                            <div class="grid"><span>售後服務</span></div>
-                            <div class="grid"><span>交易保障</span></div>
-                            <div class="grid"><span>成交金額</span></div>
-                        </div>
-                        <div class="table-item d-flex flex-column bg-white rounded table-shadow">
-                                <div class="grid"><span>車主自售</span></div>
-                                <div class="grid"><img src="./assets/icon_false.svg" height="20px" alt="icon_false.svg"></div>
-                                <div class="grid"><img src="./assets/icon_false.svg" height="20px" alt="icon_false.svg"></div>
-                                <div class="grid"><img src="./assets/icon_false.svg" height="20px" alt="icon_false.svg"></div>
-                                <div class="grid transaction"><span>低於市售</span></div>
-                        </div>
-                        <div class="table-item d-flex flex-column bg-white rounded table-shadow">
-                                <div class="grid"><span>傳統店家</span></div>
-                                <div class="grid"><img src="./assets/icon_false.svg" height="20px" alt="icon_false.svg"></div>
-                                <div class="grid"><img src="./assets/icon_false.svg" height="20px" alt="icon_false.svg"></div>
-                                <div class="grid"><img src="./assets/icon_true.svg" height="20px" alt="icon_true.svg"></div>
-                                <div class="grid transaction text-center"><span>市價<br>(行情價)</span></div>
-                        </div>
-                        <div class="table-item d-flex flex-column bg-white rounded table-shadow">
-                                <div class="grid"><span>傳統店家</span></div>
-                                <div class="grid"><img src="./assets/icon_true.svg" height="20px" alt="icon_true.svg"></div>
-                                <div class="grid"><img src="./assets/icon_true.svg" height="20px" alt="icon_true.svg"></div>
-                                <div class="grid"><img src="./assets/icon_true.svg" height="20px" alt="icon_true.svg"></div>
-                                <div class="grid transaction text-center"><span>服務費<br>1.5%</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="seller" style="display: none;">
-                <p class="program-title text-center font-fifth">
-                    輕鬆簡單的流程，我們的服務提供您<br>
-                        最有保障的買賣過程
-                </p>
-                <div class="program-info d-flex flex-column justify-content-between align-items-center">
-                    <img src="./assets/__sell procedure.svg" height="288px" alt="buy procedure.svg">
-                    <div class="market-comparison-table d-flex justify-content-around align-items-start">
-                        <div class="table-item d-flex flex-column">
-                            <div class="grid"></div>
-                            <div class="grid"><span>車況透明</span></div>
-                            <div class="grid"><span>售後服務</span></div>
-                            <div class="grid"><span>交易保障</span></div>
-                            <div class="grid"><span>成交金額</span></div>
-                        </div>
-                        <div class="table-item d-flex flex-column bg-white rounded table-shadow">
-                                <div class="grid"><span>車主自售</span></div>
-                                <div class="grid"><img src="./assets/icon_false.svg" height="20px" alt="icon_false.svg"></div>
-                                <div class="grid"><img src="./assets/icon_false.svg" height="20px" alt="icon_false.svg"></div>
-                                <div class="grid"><img src="./assets/icon_false.svg" height="20px" alt="icon_false.svg"></div>
-                                <div class="grid transaction"><span>低於市售</span></div>
-                        </div>
-                        <div class="table-item d-flex flex-column bg-white rounded table-shadow">
-                                <div class="grid"><span>傳統店家</span></div>
-                                <div class="grid"><img src="./assets/icon_false.svg" height="20px" alt="icon_false.svg"></div>
-                                <div class="grid"><img src="./assets/icon_false.svg" height="20px" alt="icon_false.svg"></div>
-                                <div class="grid"><img src="./assets/icon_true.svg" height="20px" alt="icon_true.svg"></div>
-                                <div class="grid transaction text-center"><span>市價<br>(行情價)</span></div>
-                        </div>
-                        <div class="table-item d-flex flex-column bg-white rounded table-shadow">
-                                <div class="grid"><span>傳統店家</span></div>
-                                <div class="grid"><img src="./assets/icon_true.svg" height="20px" alt="icon_true.svg"></div>
-                                <div class="grid"><img src="./assets/icon_true.svg" height="20px" alt="icon_true.svg"></div>
-                                <div class="grid"><img src="./assets/icon_true.svg" height="20px" alt="icon_true.svg"></div>
-                                <div class="grid transaction text-center"><span>服務費<br>1.5%</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="d-flex justify-content-center">
-                <button class="btn bg-black" type="button">立刻招喚汽車經理人</button>
-            </div>
-        </div>
-
         <footer class="footer-bg"></footer>
     </div>
 

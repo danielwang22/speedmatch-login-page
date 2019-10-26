@@ -1,29 +1,18 @@
-//desktop and up Dom元素
-let productContentList = document.querySelector('.product-content-list');
-let userPhotoImage,baseInfo;
-
-//function
-
-//監聽
-$(`.login-signal-desk .base-info-form .add-photo`).change(()=>{
-    let dom =  $(`.login-signal-desk .base-info-form .add-photo`)[0];
-    updateUserPhoto(dom,'desk')
-});
-$(`.login-signal-mobile .base-info-form .add-photo-mobile`).change(()=>{
-    let dom =  $(`.login-signal-mobile .base-info-form .add-photo-mobile`)[0];
-    updateUserPhoto(dom,'mobile')
+$(`.login-signal .base-info-form .add-photo`).change(()=>{
+    let dom =  $(`.login-signal .base-info-form .add-photo`)[0];
+    updateUserPhoto(dom)
 });
 
 //update user photo
-const updateUserPhoto = (item,container)=>{
+let userPhotoImage;
+const updateUserPhoto = (item)=>{
     let files = item.files;
     if (files && files.length >= 1) {
         convertFile(files)
         .then(data => {
             //console.log(data) // 把編碼後的字串輸出到console
             userPhotoImage = data;
-            console.log(container)
-            $(`.login-signal-${container} .base-info-form .user-photo`)
+            $(`.login-signal .base-info-form .user-photo`)
             .css({
                 'background-image': `url(${data})`,
                 'background-position': `center center`,
@@ -49,6 +38,7 @@ const convertFile = (files)=> {
     })
 }
 //product-content 的輪播
+let productContentList = document.querySelector('.product-content-mobile-list');
 let offsetX = productContentList.style.left;
 setInterval(()=>{
     if(window.outerWidth <= 768){
@@ -72,49 +62,49 @@ setInterval(()=>{
         }
     }
 },5000)
-//progeam 的輪播
-const progeamAnimation = (container) =>{
-    $(`.login-signal-${container} .buyer-btn`).click(function(){
-        console.log('QQQQ')
-        $(`.login-signal-${container} .buyer-btn`).css({
-            'background-color':'#000',
-            'color':"#fff"
-        });
-        $(`.login-signal-${container} .seller-btn`).css({
-            'background-color':'transparent',
-            'color':"#000"
-        });
-        $(`.login-signal-${container} .buyer`)
-        .show()
-        .addClass('fadIn');
-        $(`.login-signal-${container} .seller`)
-        .hide();
-    })
-    
-    $(`.login-signal-${container} .seller-btn`).click(function(){
-        $(`.login-signal-${container} .seller-btn`).css({
-            'background-color':'#000',
-            'color':"#fff"
-        });
-        $(`.login-signal-${container} .buyer-btn`).css({
-            'background-color':'transparent',
-            'color':"#000"
-        });
-        $(`.login-signal-${container} .seller`)
-        .show()
-        .addClass('fadIn');
-        $(`.login-signal-${container} .buyer`)
-        .hide();
-    })
-}
 
-progeamAnimation('desk')
-progeamAnimation('mobile')
+//progeam 的淡入與淡出
+$(`.login-signal .buyer-btn`).click(function(){
+
+    $(`.login-signal .buyer-btn`).css({
+        'background-color':'#000',
+        'color':"#fff"
+    });
+    $(`.login-signal .buyer`)
+    .show()
+    .addClass('fadIn');
+
+    $(`.login-signal .seller-btn`).css({
+        'background-color':'transparent',
+        'color':"#000"
+    });
+    $(`.login-signal .seller`)
+    .hide();
+})
+    
+$(`.login-signal .seller-btn`).click(function(){
+    $(`.login-signal .seller-btn`).css({
+        'background-color':'#000',
+        'color':"#fff"
+    });
+    $(`.login-signal .seller`)
+    .show()
+    .addClass('fadIn');
+    
+    $(`.login-signal .buyer-btn`).css({
+        'background-color':'transparent',
+        'color':"#000"
+    });
+    $(`.login-signal .buyer`)
+    .hide();
+})
+
 
 //表單驗證
+
 //基本資料
 let newWindow = window.open("","_self");
-const createInfoFormOptions = (container)=>{
+const createInfoFormOptions = ()=>{
     const baseInfoFormOptions = {
             rules: { 
                 userPhoto: { required: true },
@@ -136,36 +126,59 @@ const createInfoFormOptions = (container)=>{
           },
             submitHandler:function(form){
                 const baseInfo = {
-                    name: $(`.login-signal-${container} .base-info-form #name`).val(),
-                    Nickname: $(`.login-signal-${container} .base-info-form #Nickname`).val(),
-                    sex:$(`.login-signal-${container} .base-info-form input[name="radioSex"]:checked`).val(),
-                    birthday: $(`.login-signal-${container} .base-info-form #birthday`).val(),
-                    email: $(`.login-signal-${container} .base-info-form #email`).val(),
-                    city: $(`.login-signal-${container} .base-info-form .input-city`).val(),
+                    name: $(`.login-signal .base-info-form #name`).val(),
+                    Nickname: $(`.login-signal .base-info-form #Nickname`).val(),
+                    sex:$(`.login-signal .base-info-form input[name="radioSex"]:checked`).val(),
+                    birthday: $(`.login-signal .base-info-form #birthday`).val(),
+                    email: $(`.login-signal .base-info-form #email`).val(),
+                    city: $(`.login-signal .base-info-form .input-city`).val(),
                     userPhoto: userPhotoImage,
                 }
+
                 localStorage.setItem('signInData', JSON.stringify(baseInfo));
 
-                setTimeout(
-                    function(){
-                        window.location.href = "./setAccount.html";
-                        }, 1000);
-                
-                // newWindow.location.href = 
+                $.ajax({
+                    url: 'https://shun.inspire-dt.com/baseInfo.php', // Apache 開的 網域
+                    type: 'post',//可改 get 或 post
+                    data:{
+                        data: baseInfo
+                    },
+                    xhrFields:{
+                        withCredentials:true
+                    },
+                    error: function(xhr) {
+                        console.log('request 發生錯誤',xhr);
+                    },
+                    success: function(response) {
+                        console.log('寫入成功');
+                        console.log(response);
+                        if(response == 'false'){
+                            alert('表單錯誤')
+                        }else{
+                            setTimeout(
+                                function(){
+                                    window.location.href = "./setAccount.html";
+                            }, 1000);
+                        }
+                    }
+                });
+
             }
     }
     return baseInfoFormOptions;
 }
 
-const validatorBaseInfoDesktop = $(".login-signal-desk .base-info-form").validate(createInfoFormOptions('desk'));
-const validatorBaseInfoMobile = $(".login-signal-mobile .base-info-form").validate(createInfoFormOptions('mobile'));
+const validatorBaseInfo = $(".login-signal .base-info-form").validate(createInfoFormOptions());
+
+
+
 
 //電話帳號&驗證碼
 //傳送驗證碼 desk
 let verificationCode;
-$(`.login-signal-desk .set-account-form .getVerifyBtn`).click(()=>{
+$(`.login-signal .set-account-form .getVerifyBtn`).click(()=>{
 
-    let telAccount = $(`.login-signal-desk .set-account-form #telAccount`).val();
+    let telAccount = $(`.login-signal .set-account-form #telAccount`).val();
     let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
@@ -186,52 +199,20 @@ $(`.login-signal-desk .set-account-form .getVerifyBtn`).click(()=>{
             countDownResend()
         }
     });
-})
-//傳送驗證碼 mobile
-$(`.login-signal-mobile .set-account-form .getVerifyBtn`).click(()=>{
-
-    let telAccount = $(`.login-signal-mobile .set-account-form #telAccount`).val();
-    let object = JSON.parse(localStorage.getItem('signInData'))
-
-    $.ajax({
-        url: 'https://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
-        type: 'get',//可改 get 或 post
-        data: {
-            account: telAccount, //前台客戶端輸入的手機號碼
-            name : object.name
-        },
-        error: function(xhr) {
-        console.log('request 發生錯誤',xhr);
-        },
-        success: function(response) {
-            console.log('成功')
-            let res = JSON.parse(response)
-            console.log(res.verificationCode)
-            verificationCode = res.verificationCode
-            countDownResend()
-        }
-    });
-})
+});
+//倒數計時文字
 let Interval = null;
 const countDownResend = ()=>{
         Interval = setInterval(()=>{
         verificationCode = null;
 
-        $('.login-signal-desk .set-account-form .countDown-text')
-        .text('時間已到重新傳送代碼.....')
-        .css('color','red')
-
-        $('.login-signal-mobile .set-account-form .countDown-text')
+        $('.login-signal .set-account-form .countDown-text')
         .text('時間已到重新傳送代碼.....')
         .css('color','red')
 
         setTimeout(()=>{
 
-            $('.login-signal-desk .set-account-form .countDown-text')
-            .text('3分鐘後將會重新傳送代碼')
-            .css('color','rgb(116,116,116)')
-
-            $('.login-signal-mobile .set-account-form .countDown-text')
+            $('.login-signal .set-account-form .countDown-text')
             .text('3分鐘後將會重新傳送代碼')
             .css('color','rgb(116,116,116)')
 
@@ -247,7 +228,8 @@ jQuery.validator.addMethod('phone',function(value,element){
 jQuery.validator.addMethod("EqualTverificationCode", function(value, element, param) {
     return this.optional(element) || value == verificationCode;
   }, "請確認你的驗證碼是否正確");
-const createAccountOptions = function(container){
+
+const createAccountOptions = () => {
     const setAccountOptions = {
         rules:{
             telAccount: { required:true, phone:true , minlength:10 },
@@ -258,35 +240,54 @@ const createAccountOptions = function(container){
         },
         submitHandler:function(html){
             clearInterval(Interval);
-            let telAccount = $(`.login-signal-${container} .set-account-form #telAccount`).val();
+
+            let telAccount = $(`.login-signal .set-account-form #telAccount`).val();
 
             let object = JSON.parse(localStorage.getItem('signInData'))
-
             object.account = telAccount;
-
             localStorage.setItem('signInData', JSON.stringify(object));
-            
-            newWindow.location.href = "./setPassword.html"
+
+            $.ajax({
+                url: 'https://shun.inspire-dt.com/setAccount.php', // Apache 開的 網域
+                type: 'post',//可改 get 或 post
+                data:{
+                    data: telAccount
+                },
+                xhrFields:{
+                    withCredentials:true
+                },
+                error: function(xhr) {
+                    console.log('發生錯誤');
+                    console.log(xhr);
+                },
+                success: function(response) {
+                    console.log('寫入成功');
+                    console.log(response);
+                    newWindow.location.href = "./setPassword.html"
+                }
+            });
         }
     }
 
     return setAccountOptions;
 }
-const validateSetAccountDesktop = $('.login-signal-desk .set-account-form').validate(createAccountOptions('desk'))
-const validateSetAccountMobile = $('.login-signal-mobile .set-account-form').validate(createAccountOptions('mobile'))
+const validateSetAccount = $('.login-signal .set-account-form').validate(createAccountOptions())
+
+
+
 //設定密碼
-const createSetPasswordOptions = (container)=>{
+const createSetPasswordOptions = ()=>{
     const setPasswordOptions ={
             rules: { 
                 password: { required: true , minlength: 3},
-                comfirmPassword: { required: true , equalTo:`#password-${container}` , minlength: 3}
+                comfirmPassword: { required: true , equalTo:`#password` , minlength: 3}
             },
             messages: {
                 password: "請輸入密碼",
                 comfirmPassword: "與密碼不同",
           },
             submitHandler:function(html){
-                let password = $(`.login-signal-${container} .set-password-form input[type=password]`).val();
+                let password = $(`.login-signal .set-password-form input[type=password]`).val();
 
                 let object = JSON.parse(localStorage.getItem('signInData'))
 
@@ -295,16 +296,21 @@ const createSetPasswordOptions = (container)=>{
                 localStorage.setItem('signInData', JSON.stringify(object));
                 
                 $.ajax({
-                    url: 'https://shun.inspire-dt.com/signInData.php', // Apache 開的 網域
+                    url: 'https://shun.inspire-dt.com/MixAllResults.php', // Apache 開的 網域
                     type: 'post',//可改 get 或 post
                     data: {
-                        signInData: object,
+                        data: password,
+                    },
+                    xhrFields:{
+                        withCredentials:true
                     },
                     error: function(xhr) {
-                        console.log('request 發生錯誤',xhr);
+                        console.log('發生錯誤');
+                        console.log(xhr)
                     },
                     success: function(response) {
-                    console.log('寫入成功',response)
+                    console.log('寫入成功')
+                    console.log(response)
                     
                     newWindow.location.href = "./signInSuccess.html"
                     }
@@ -313,36 +319,27 @@ const createSetPasswordOptions = (container)=>{
     }
     return setPasswordOptions;
 }
+const validateSetPassword = $('.login-signal .set-password-form').validate(createSetPasswordOptions())
 
-const validateSetPasswordDesktop = $('.login-signal-desk .set-password-form').validate(createSetPasswordOptions('desk'))
-const validateSetPasswordMobile = $('.login-signal-mobile .set-password-form').validate(createSetPasswordOptions('mobile'))
+
 //註冊成功
 if(window.location.pathname == '/signInSuccess.html'){
     let object = JSON.parse(localStorage.getItem('signInData'))
-    $(`.login-signal-desk .signIn-success-form .user-photo`).css({
+    $(`.login-signal .signIn-success-form .user-photo`).css({
         'background-image': `url(${object.userPhoto})`,
         'background-position': `center center`,
         'background-size':`cover`,
         'height': `90px`,
         'width': `90px`,
     })
-    $(`.login-signal-desk .signIn-success-form .userAccount`).text(object.account)
-
-    $(`.login-signal-mobile .signIn-success-form .user-photo`).css({
-        'background-image': `url(${object.userPhoto})`,
-        'background-position': `center center`,
-        'background-size':`cover`,
-        'height': `90px`,
-        'width': `90px`,
-    })
-    $(`.login-signal-mobile .signIn-success-form .userAccount`).text(object.account)
+    $(`.login-signal .signIn-success-form .userAccount`).text(object.account)
 }
 
 //忘記密碼
-//傳送驗證碼 mobile
-$(`.login-signal-desk .forget-password-form .getVerifyBtn`).click(()=>{
+//取得驗證碼
+$(`.login-signal .forget-password-form .getVerifyBtn`).click(()=>{
 
-    let telAccount = $(`.login-signal-desk .forget-password-form #telAccount`).val();
+    let telAccount = $(`.login-signal .forget-password-form #telAccount`).val();
     let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
@@ -353,32 +350,8 @@ $(`.login-signal-desk .forget-password-form .getVerifyBtn`).click(()=>{
             name : object.name
         },
         error: function(xhr) {
-        console.log('request 發生錯誤',xhr);
-        },
-        success: function(response) {
-            console.log('成功')
-            let res = JSON.parse(response)
-            console.log(res.verificationCode)
-            verificationCode = res.verificationCode
-            countDownResend()
-        }
-    });
-})
-//傳送驗證碼 mobile
-$(`.login-signal-mobile .forget-password-form .getVerifyBtn`).click(()=>{
-
-    let telAccount = $(`.login-signal-mobile .forget-password-form #telAccount`).val();
-    let object = JSON.parse(localStorage.getItem('signInData'))
-
-    $.ajax({
-        url: 'https://127.0.0.4/everyBodySample.php', // Apache 開的 網域
-        type: 'get',//可改 get 或 post
-        data: {
-            account: telAccount, //前台客戶端輸入的手機號碼
-            name : object.name
-        },
-        error: function(xhr) {
-        console.log('request 發生錯誤',xhr);
+        console.log('發生錯誤');
+        console.log(xhr);
         },
         success: function(response) {
             console.log('成功')
@@ -390,7 +363,7 @@ $(`.login-signal-mobile .forget-password-form .getVerifyBtn`).click(()=>{
     });
 })
 //忘記密碼 - 驗證帳號(電話號碼)
-const createForgetPasswordOptions = function(container){
+const createForgetPasswordOptions = () => {
     const ForgetPasswordOptions = {
         rules:{
             telAccount: { required:true, phone:true , minlength:10 },
@@ -407,10 +380,11 @@ const createForgetPasswordOptions = function(container){
 
     return ForgetPasswordOptions;
 }
-const validateforgetPasswordDesktop = $('.login-signal-desk .forget-password-form').validate(createForgetPasswordOptions('desk'))
-const validateforgetPasswordMobile = $('.login-signal-mobile .forget-password-form').validate(createForgetPasswordOptions('mobile'))
+const validateforgetPassword = $('.login-signal .forget-password-form').validate(createForgetPasswordOptions())
+
+
 //忘記密碼 - 設定新密碼
-const createSetNewPasswordOptions = (container)=>{
+const createSetNewPasswordOptions = ()=>{
     const setNewPasswordOptions ={
             rules: { 
                 password: { required: true , minlength: 3},
@@ -426,8 +400,7 @@ const createSetNewPasswordOptions = (container)=>{
     }
     return setNewPasswordOptions;
 }
-const validateSetNewPasswordDesktop = $('.login-signal-desk .set-new-password-form').validate(createSetNewPasswordOptions('desk'))
-const validateSetNewPasswordMobile = $('.login-signal-mobile .set-new-password-form').validate(createSetNewPasswordOptions('mobile'))
+const validateSetNewPassword = $('.login-signal .set-new-password-form').validate(createSetNewPasswordOptions())
 
 
 

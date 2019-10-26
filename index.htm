@@ -9,7 +9,57 @@
 </head>
 <body>
     <!-- desk and up version -->
-    <div class="login-signal-desk visible-desk">
+    <div class="login-signal">
+        <!-- 手機板模式下產品內容輪播 -->
+        <div class="mobile-product-introduction">
+            <div class="title font-thrid font-weight-bold">
+                成為車友，輕鬆交朋友
+            </div>
+            <div class="product-content-mobile">
+                <div class="product-content-mobile-list d-flex">
+                    <!-- 內文功能介紹1 -->
+                    <div id="content-box1" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
+                        <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
+                        <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">買</span>到價格車況一致的車</div>
+                        <div class="content-box-info grid-10 font-fifth">
+                            在價格最漂亮的時機出手！
+                            專屬為您服務，省時省事。
+                        </div>
+                    </div>
+                    <!-- 內文功能介紹2 -->
+                    <div id="content-box2" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
+                        <img src="./assets/feature/icon_car-maintenance.svg" onerror="this.src='car-maintenance.png'" height="80px" class="content-box-icon">
+                        <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">養</span>車保養拒當冤大頭</div>
+                        <div class="content-box-info grid-10 font-fifth">
+                            設定您的座駕，搜尋附近專屬您的
+                            板金服務、烤漆服務、保養服務、
+                            汽車美容、升級改裝、更換零件。
+                    </div>
+                    </div>
+                    <!-- 內文功能介紹3 -->
+                    <div id="content-box3" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
+                        <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
+                        <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">賣</span>出一個漂亮價格</div>
+                        <div class="content-box-info grid-10 font-fifth">
+                            您的車其實比您想像的有價值，讓
+                            您勇敢拒絕低價回收，專屬為您服
+                            務，省時省事。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-content-mobile-pagination d-flex justify-content-center postion-relative">
+                <div class="pagination-step step1">
+                    <div class="border-light circle-rounded bg-black"></div>
+                </div>
+                <div class="pagination-step step2">
+                    <div class="border-light circle-rounded"></div>
+                </div>
+                <div class="pagination-step step3">
+                    <div class="border-light circle-rounded"></div>
+                </div>
+            </div>
+        </div>
         <!-- 頁面大標 -->
         <div class="title-container">
             <div class="title font-primary">
@@ -17,7 +67,7 @@
                 <span class="title-secondary font-weight-normal">隨時隨地關注車有動態</span>
             </div>
             <!-- 表單 -->
-            <form name="base-info-desktop" class="base-info-form d-block form-bg" action="./setAccount.html">
+            <form name="base-info-desktop" class="base-info-form d-block form-bg" action="">
                 <div class="progress-bar d-flex justify-content-between postion-relative">
                     <div class="progress-step border-light circle-rounded form-bg"></div>
                     <div class="progress-step border-light circle-rounded form-bg"></div>
@@ -48,7 +98,7 @@
                             <label for="woman">女</label>
                         </span>
                     </div>
-                    <input type="date" name="birthday" id="birthday" data-placeholder="出生年月日" required aria-required="true">
+                    <input type="date" name="birthday" id="birthday" placeholder="出生年月日 EX:2019/01/01" data-placeholder="出生年月日" required aria-required="true">
                 </div>
                 <div class="form-group">
                     <input type="email" name="email" id="email" pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*" placeholder="電子郵件">
@@ -133,128 +183,6 @@
             </div>
         </div>
         <footer class="footer-bg"></footer>
-    </div>
-    <!-- mobile version -->
-    <div class="login-signal-mobile visible-mobile">
-        <div class="title font-thrid font-weight-bold">
-            成為車友，輕鬆交朋友
-        </div>
-        <div class="product-content">
-            <div class="product-content-list d-flex">
-                <!-- 內文功能介紹1 -->
-                <div id="content-box1" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
-                    <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
-                    <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">買</span>到價格車況一致的車</div>
-                    <div class="content-box-info grid-10 font-fifth">
-                        在價格最漂亮的時機出手！
-                        專屬為您服務，省時省事。
-                    </div>
-                </div>
-                <!-- 內文功能介紹2 -->
-                <div id="content-box2" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
-                    <img src="./assets/feature/icon_car-maintenance.svg" onerror="this.src='car-maintenance.png'" height="80px" class="content-box-icon">
-                    <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">養</span>車保養拒當冤大頭</div>
-                    <div class="content-box-info grid-10 font-fifth">
-                        設定您的座駕，搜尋附近專屬您的
-                        板金服務、烤漆服務、保養服務、
-                        汽車美容、升級改裝、更換零件。
-                </div>
-                </div>
-                <!-- 內文功能介紹3 -->
-                <div id="content-box3" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
-                    <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
-                    <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">賣</span>出一個漂亮價格</div>
-                    <div class="content-box-info grid-10 font-fifth">
-                        您的車其實比您想像的有價值，讓
-                        您勇敢拒絕低價回收，專屬為您服
-                        務，省時省事。
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="product-content-pagination d-flex justify-content-center postion-relative">
-            <div class="pagination-step step1">
-                <div class="border-light circle-rounded bg-black"></div>
-            </div>
-            <div class="pagination-step step2">
-                <div class="border-light circle-rounded"></div>
-            </div>
-            <div class="pagination-step step3">
-                <div class="border-light circle-rounded"></div>
-            </div>
-        </div>
-        
-        <form class="base-info-form d-block form-bg" action="">
-            <div class="progress-bar d-flex justify-content-between postion-relative">
-                <div class="progress-step border-light circle-rounded form-bg"></div>
-                <div class="progress-step border-light circle-rounded form-bg"></div>
-                <div class="progress-step border-light circle-rounded form-bg"></div>
-                <div class="progress-step border-light circle-rounded form-bg"></div>
-                <div class="level-bar border-light"></div>
-            </div>
-            <div class="font-fifth">請填寫你的基本資料&上傳相片</div>
-            <div class="user-photo bg-white circle-rounded">
-                <label class="user-photo-update" for="update-photo-mobile">
-                    <img src="./assets/icon_add.svg" height="24px" alt="" srcset="">
-                </label>
-                <input class="add-photo-mobile" type="file" name="userPhoto" id="update-photo-mobile">
-            </div>
-            <div class="form-group">
-                <input type="text" name="name" id="name" placeholder="真實姓名">
-                <input type="text" name="Nickname" id="Nickname" placeholder="暱稱">
-            </div>
-            <div class="form-group">
-                <div class="input-sex d-flex">
-                    <div class="input-sex-label font-muted">性別</div>
-                    <span style="margin-right: 20px;">
-                        <input type="radio" id="man-mobile" name="radioSex" value="man" checked>
-                        <label for="man-mobile">男</label>
-                    </span>
-                    <span>
-                        <input type="radio" id="woman-mobile" name="radioSex" value="woman">
-                        <label for="woman-mobile">女</label>
-                    </span>
-                </div>
-                <input type="date" name="birthday" id="birthday" data-placeholder="出生年月日" required aria-required="true">
-            </div>
-            <div class="form-group">
-                <input type="email" name="email" id="email" placeholder="電子郵件">
-            </div>
-            <div class="form-group d-flex flex-row">
-                <div class="input-country bg-white border-light font-muted" id="country">台灣</div>
-                <select class="input-city" name="city" id="city" required>
-                    <option value="" disabled selected hidden>請選擇城市</option>
-                    <option value="基隆市">基隆市</option>
-                    <option value="台北市">台北市</option>	
-                    <option value="新北市">新北市</option>	
-                    <option value="桃園縣">桃園縣</option>	
-                    <option value="新竹縣">新竹縣</option>	
-                    <option value="新竹縣">新竹市</option>	
-                    <option value="苗栗縣">苗栗縣</option>	
-                    <option value="台中市">台中市</option>	
-                    <option value="南投縣">南投縣</option>	
-                    <option value="彰化縣">彰化縣</option>	
-                    <option value="雲林縣">雲林縣</option>
-                    <option value="嘉義縣">嘉義縣</option>
-                    <option value="嘉義市">嘉義市</option>
-                    <option value="台南市">台南市</option>
-                    <option value="高雄市">高雄市</option>	
-                    <option value="屏東縣">屏東縣</option>
-                    <option value="宜蘭縣">宜蘭縣</option>
-                    <option value="花蓮縣">花蓮縣</option>
-                    <option value="台東縣">台東縣</option>
-                </select>
-            </div>
-            <button type="submit" class="btn bg-black">下一步</button>
-            <div class="d-flex justify-content-between">
-                <span>已有帳號嗎？
-                <a href="./logIn.html" class="font-color-primary">
-                    登入
-                    <img src="./assets/button arrow right blue.svg" height="10px" alt="button arrow right">
-                </a>
-                </span>
-            </div>
-        </form>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

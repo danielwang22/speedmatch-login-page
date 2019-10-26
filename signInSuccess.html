@@ -9,7 +9,57 @@
 </head>
 <body>
     <!-- desk and top version -->
-    <div class="login-signal-desk visible-desk">
+    <div class="login-signal">
+        <!-- 手機板模式下產品內容輪播 -->
+        <div class="mobile-product-introduction">
+            <div class="title font-thrid font-weight-bold">
+                成為車友，輕鬆交朋友
+            </div>
+            <div class="product-content-mobile">
+                <div class="product-content-mobile-list d-flex">
+                    <!-- 內文功能介紹1 -->
+                    <div id="content-box1" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
+                        <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
+                        <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">買</span>到價格車況一致的車</div>
+                        <div class="content-box-info grid-10 font-fifth">
+                            在價格最漂亮的時機出手！
+                            專屬為您服務，省時省事。
+                        </div>
+                    </div>
+                    <!-- 內文功能介紹2 -->
+                    <div id="content-box2" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
+                        <img src="./assets/feature/icon_car-maintenance.svg" onerror="this.src='car-maintenance.png'" height="80px" class="content-box-icon">
+                        <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">養</span>車保養拒當冤大頭</div>
+                        <div class="content-box-info grid-10 font-fifth">
+                            設定您的座駕，搜尋附近專屬您的
+                            板金服務、烤漆服務、保養服務、
+                            汽車美容、升級改裝、更換零件。
+                    </div>
+                    </div>
+                    <!-- 內文功能介紹3 -->
+                    <div id="content-box3" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
+                        <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
+                        <div class="content-box-title grid-12 font-fifth font-weight-lighter"><span class="font-color-primary font-forth font-weight-normal">賣</span>出一個漂亮價格</div>
+                        <div class="content-box-info grid-10 font-fifth">
+                            您的車其實比您想像的有價值，讓
+                            您勇敢拒絕低價回收，專屬為您服
+                            務，省時省事。
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-content-mobile-pagination d-flex justify-content-center postion-relative">
+                <div class="pagination-step step1">
+                    <div class="border-light circle-rounded bg-black"></div>
+                </div>
+                <div class="pagination-step step2">
+                    <div class="border-light circle-rounded"></div>
+                </div>
+                <div class="pagination-step step3">
+                    <div class="border-light circle-rounded"></div>
+                </div>
+            </div>
+        </div>
         <!-- 頁面大標 -->
         <div class="title-container">
             <div class="title font-primary">
@@ -94,92 +144,11 @@
         </div>
         <footer class="footer-bg"></footer>
     </div>
-    <!-- mobile version -->
-    <div class="login-signal-mobile visible-mobile">
-        <div class="title font-thrid font-weight-bold">
-            成為車友，輕鬆交朋友
-        </div>
-        <div class="product-content">
-            <div class="product-content-list d-flex">
-                <!-- 內文功能介紹1 -->
-                <div id="content-box1" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
-                    <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
-                    <div class="content-box-title grid-12 font-fifth"><span class="font-color-primary font-forth font-weight-normal">買</span>到價格車況一致的車</div>
-                    <div class="content-box-info grid-10 font-fifth">
-                        在價格最漂亮的時機出手！
-                        專屬為您服務，省時省事。
-                    </div>
-                </div>
-                <!-- 內文功能介紹2 -->
-                <div id="content-box2" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
-                    <img src="./assets/feature/icon_car-maintenance.svg" onerror="this.src='car-maintenance.png'" height="80px" class="content-box-icon">
-                    <div class="content-box-title grid-12 font-fifth"><span class="font-color-primary font-forth font-weight-normal">養</span>車保養拒當冤大頭</div>
-                    <div class="content-box-info grid-10 font-fifth">
-                        設定您的座駕，搜尋附近專屬您的
-                        板金服務、烤漆服務、保養服務、
-                        汽車美容、升級改裝、更換零件。
-                </div>
-                </div>
-                <!-- 內文功能介紹3 -->
-                <div id="content-box3" class="content-box d-flex flex-row justify-content-center grid-4 font-thrid">
-                    <img src="./assets/feature/icon_car-insurance.jpg" onerror="this.src='car-insurance.png'" height="80px" class="content-box-icon">
-                    <div class="content-box-title grid-12 font-fifth"><span class="font-color-primary font-forth font-weight-normal">賣</span>出一個漂亮價格</div>
-                    <div class="content-box-info grid-10 font-fifth">
-                        您的車其實比您想像的有價值，讓
-                        您勇敢拒絕低價回收，專屬為您服
-                        務，省時省事。
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="product-content-pagination d-flex justify-content-center postion-relative">
-            <div class="pagination-step step1">
-                <div class="border-light circle-rounded bg-black"></div>
-            </div>
-            <div class="pagination-step step2">
-                <div class="border-light circle-rounded"></div>
-            </div>
-            <div class="pagination-step step3">
-                <div class="border-light circle-rounded"></div>
-            </div>
-        </div>
-        <form class="signIn-success-form d-block form-bg" action="">
-            <div class="progress-bar d-flex justify-content-between postion-relative">
-                <div class="progress-step border-light circle-rounded form-bg"></div>
-                <div class="progress-step border-light circle-rounded form-bg"></div>
-                <div class="progress-step border-light circle-rounded form-bg"></div>
-                <div class="progress-step border-light circle-rounded form-bg"></div>
-                <div class="level-bar border-light"></div>
-            </div>
-            <div class="user-photo bg-white circle-rounded">
-                <img class="user-photo-success" src="./assets/icon_true.svg" height="24px" alt="user-photo-success">
-            </div>
 
-            <p class="success-content font-fifth font-weight-normal text-center">
-                G-PAY 先生/女士您好！<br>
-                您的手機號碼即是帳號 <br>
-                您的帳號是：<span class="userAccount font-color-primary font-weight-bold"></span><br>
-                極速配對App預計2020年1月開放下載<br>
-                但您可以先使用招喚汽車經理人<br>
-                幫您進行買/賣的服務嘍
-            </p>
-
-            <a href="./logIn.html" class="btn bg-black">開始使用</a>
-            <div class="d-flex justify-content-between">
-                <span>已有帳號嗎？
-                <a href="./logIn.html" class="font-color-primary">
-                    登入
-                    <img src="./assets/button arrow right blue.svg" height="10px" alt="button arrow right">
-                </a>
-                </span>
-            </div>
-        </form>
-    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/localization/messages_zh_TW.min.js"></script>
+    <script type="text/javascript" src="./js/all.js"></script>
 </body>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/additional-methods.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/localization/messages_zh_TW.min.js"></script>
-        <script type="text/javascript" src="./js/all.js"></script>
 </html>

@@ -23,18 +23,18 @@ if (preg_match('/^\d+$/i', $mobile)){
         $postUrl .= '&DEST=' . $mobile ;
 
 
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $postUrl);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Length: 0'));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        if(curl_errno($ch)){
-            echo 'Curl error: ' . curl_error($ch);
-        }
-        //print_r(curl_getinfo($ch));
-		$output = curl_exec($ch); 
-        //echo "output" . curl_exec($ch);
-        curl_close($ch);
+		// $ch = curl_init();
+		// curl_setopt($ch, CURLOPT_URL, $postUrl);
+        // curl_setopt($ch, CURLOPT_POST, true);
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Length: 0'));
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        // if(curl_errno($ch)){
+        //     echo 'Curl error: ' . curl_error($ch);
+        // }
+        // //print_r(curl_getinfo($ch));
+		// $output = curl_exec($ch); 
+        // //echo "output" . curl_exec($ch);
+        // curl_close($ch);
 
 		$returnData = json_encode(array('is_error' => 0, 'msg' => '驗證碼發送成功, 您已成功註冊, 請留意手機簡訊','verificationCode' => $code),JSON_UNESCAPED_UNICODE);
 
