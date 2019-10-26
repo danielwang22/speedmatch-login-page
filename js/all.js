@@ -188,6 +188,9 @@ $(document).ready(function(){
             xhrFields:{
                 withCredentials:true
             },
+            headers:{
+                "cache-control":"no-cache"
+            },
             data: {
                 account: telAccount, //前台客戶端輸入的手機號碼
                 name : object.name
@@ -208,7 +211,7 @@ $(document).ready(function(){
                 countDownResend('set-account')
             }
         });
-    });
+    }); 
 });
 
 //倒數計時文字
