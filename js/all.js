@@ -182,7 +182,6 @@ $(document).ready(function(){
         e.preventDefault();
         
         let telAccount = $(`.login-signal .set-account-form #telAccount`).val();
-        let object = JSON.parse(localStorage.getItem('signInData'))
     
         $.ajax({
             url: 'https://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
@@ -195,7 +194,6 @@ $(document).ready(function(){
             },
             data: {
                 account: telAccount, //前台客戶端輸入的手機號碼
-                name : object.name
             },
             error: function(xhr) {
             console.log('request 發生錯誤',xhr);
