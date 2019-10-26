@@ -335,16 +335,16 @@ if(window.location.pathname == '/signInSuccess.html'){
         success: function(response) {
             console.log('成功')
             let res = JSON.parse(response)
-            console.log(response)
+            console.log(res)
 
             $(`.login-signal .signIn-success-form .user-photo`).css({
-                'background-image': `url(${response.userPhoto})`,
+                'background-image': `url(${res.userPhoto})`,
                 'background-position': `center center`,
                 'background-size':`cover`,
                 'height': `90px`,
                 'width': `90px`,
             })
-            $(`.login-signal .signIn-success-form .userAccount`).text(response.account)
+            $(`.login-signal .signIn-success-form .userAccount`).text(res.account)
         }
     });
 }
