@@ -196,23 +196,28 @@ $(`.login-signal .set-account-form .getVerifyBtn`).click(()=>{
             let res = JSON.parse(response)
             console.log(res.verificationCode)
             verificationCode = res.verificationCode
-            countDownResend()
+
+            $('.login-signal .set-account-form .countDown-text')
+            .text('3分鐘後將會重新傳送代碼')
+            .css('color','rgb(116,116,116)')
+            
+            countDownResend('set-account')
         }
     });
 });
 //倒數計時文字
 let Interval = null;
-const countDownResend = ()=>{
+const countDownResend = (container)=>{
         Interval = setInterval(()=>{
         verificationCode = null;
 
-        $('.login-signal .set-account-form .countDown-text')
+        $(`.login-signal .${container}-form .countDown-text`)
         .text('時間已到重新傳送代碼.....')
         .css('color','red')
 
         setTimeout(()=>{
 
-            $('.login-signal .set-account-form .countDown-text')
+            $(`.login-signal .${container}-form .countDown-text`)
             .text('3分鐘後將會重新傳送代碼')
             .css('color','rgb(116,116,116)')
 
@@ -323,7 +328,7 @@ const validateSetPassword = $('.login-signal .set-password-form').validate(creat
 
 
 //註冊成功
-if(window.location.pathname == '/signInSuccess.html'){
+if(window.location.pathname == '/speedmatch-login-page/signInSuccess.html'){
 
     $.ajax({
         url: 'https://shun.inspire-dt.com/signInSuccess.php', // Apache 開的 網域
@@ -372,7 +377,12 @@ $(`.login-signal .forget-password-form .getVerifyBtn`).click(()=>{
             let res = JSON.parse(response)
             console.log(res.verificationCode)
             verificationCode = res.verificationCode
-            countDownResend()
+
+            $('.login-signal .forget-password-form .countDown-text')
+            .text('3分鐘後將會重新傳送代碼')
+            .css('color','rgb(116,116,116)')
+            
+            countDownResend('forget-password')
         }
     });
 })
