@@ -10,6 +10,7 @@ const updateUserPhoto = (item)=>{
     if (files && files.length >= 1) {
         convertFile(files)
         .then(data => {
+            //console.log(data) // 把編碼後的字串輸出到console
             userPhotoImage = data;
             $(`.login-signal .base-info-form .user-photo`)
             .css({
@@ -137,7 +138,7 @@ const createInfoFormOptions = ()=>{
                 localStorage.setItem('signInData', JSON.stringify(baseInfo));
 
                 $.ajax({
-                    url: 'https://shun.inspire-dt.com/baseInfo.php',
+                    url: 'https://shun.inspire-dt.com/baseInfo.php', // Apache 開的 網域
                     type: 'post',//可改 get 或 post
                     data:{
                         data: baseInfo
@@ -181,7 +182,7 @@ $(`.login-signal .set-account-form .getVerifyBtn`).click(()=>{
     let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
-        url: 'https://shun.inspire-dt.com/everyBodySample.php',
+        url: 'https://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
         data: {
             account: telAccount, //前台客戶端輸入的手機號碼
@@ -252,7 +253,7 @@ const createAccountOptions = () => {
             localStorage.setItem('signInData', JSON.stringify(object));
 
             $.ajax({
-                url: 'https://shun.inspire-dt.com/setAccount.php',
+                url: 'https://shun.inspire-dt.com/setAccount.php', // Apache 開的 網域
                 type: 'post',//可改 get 或 post
                 data:{
                     data: telAccount
@@ -300,7 +301,7 @@ const createSetPasswordOptions = ()=>{
                 localStorage.setItem('signInData', JSON.stringify(object));
                 
                 $.ajax({
-                    url: 'https://shun.inspire-dt.com/MixAllResults.php',
+                    url: 'https://shun.inspire-dt.com/MixAllResults.php', // Apache 開的 網域
                     type: 'post',//可改 get 或 post
                     data: {
                         data: password,
@@ -330,11 +331,14 @@ const validateSetPassword = $('.login-signal .set-password-form').validate(creat
 if(window.location.pathname == '/speedmatch-login-page/signInSuccess.html'){
 
     $.ajax({
-        url: 'https://shun.inspire-dt.com/signInSuccess.php',
+        url: 'https://shun.inspire-dt.com/signInSuccess.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
+        xhrFields:{
+            withCredentials:true
+        },
         error: function(xhr) {
-        console.log('發生錯誤');
-        console.log(xhr);
+            console.log('發生錯誤');
+            console.log(xhr);
         },
         success: function(response) {
             console.log('成功')
@@ -361,7 +365,7 @@ $(`.login-signal .forget-password-form .getVerifyBtn`).click(()=>{
     let object = JSON.parse(localStorage.getItem('signInData'))
 
     $.ajax({
-        url: 'https://shun.inspire-dt.com/everyBodySample.php',
+        url: 'https://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
         type: 'get',//可改 get 或 post
         data: {
             account: telAccount, //前台客戶端輸入的手機號碼
