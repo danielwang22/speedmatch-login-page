@@ -166,7 +166,10 @@ const createInfoFormOptions = ()=>{
     return baseInfoFormOptions;
 }
 
-const validatorBaseInfo = $(".login-signal .base-info-form").validate(createInfoFormOptions());
+$(document).ready(function(){
+    const validatorBaseInfo = $(".login-signal .base-info-form").validate(createInfoFormOptions());
+    init();
+});
 
 
 
@@ -174,38 +177,42 @@ const validatorBaseInfo = $(".login-signal .base-info-form").validate(crea
 //電話帳號&驗證碼
 //傳送驗證碼 desk
 let verificationCode;
-$(`.login-signal .set-account-form .getVerifyBtn`).click(()=>{
+$(document).ready(function(){
+    $(`.login-signal .set-account-form .getVerifyBtn`).click(()=>{
 
-    let telAccount = $(`.login-signal .set-account-form #telAccount`).val();
-    let object = JSON.parse(localStorage.getItem('signInData'))
-
-    $.ajax({
-        url: 'https://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
-        type: 'get',//可改 get 或 post
-        xhrFields:{
-            withCredentials:true
-        },
-        data: {
-            account: telAccount, //前台客戶端輸入的手機號碼
-            name : object.name
-        },
-        error: function(xhr) {
-        console.log('request 發生錯誤',xhr);
-        },
-        success: function(response) {
-            console.log('成功')
-            let res = JSON.parse(response)
-            console.log(res.verificationCode)
-            verificationCode = res.verificationCode
-
-            $('.login-signal .set-account-form .countDown-text')
-            .text('3分鐘後將會重新傳送代碼')
-            .css('color','rgb(116,116,116)')
-            
-            countDownResend('set-account')
-        }
+        let telAccount = $(`.login-signal .set-account-form #telAccount`).val();
+        let object = JSON.parse(localStorage.getItem('signInData'))
+    
+        $.ajax({
+            url: 'https://shun.inspire-dt.com/everyBodySample.php', // Apache 開的 網域
+            type: 'get',//可改 get 或 post
+            xhrFields:{
+                withCredentials:true
+            },
+            data: {
+                account: telAccount, //前台客戶端輸入的手機號碼
+                name : object.name
+            },
+            error: function(xhr) {
+            console.log('request 發生錯誤',xhr);
+            },
+            success: function(response) {
+                console.log('成功')
+                let res = JSON.parse(response)
+                console.log(res.verificationCode)
+                verificationCode = res.verificationCode
+    
+                $('.login-signal .set-account-form .countDown-text')
+                .text('3分鐘後將會重新傳送代碼')
+                .css('color','rgb(116,116,116)')
+                
+                countDownResend('set-account')
+            }
+        });
     });
+    init();
 });
+
 //倒數計時文字
 let Interval = null;
 const countDownResend = (container)=>{
