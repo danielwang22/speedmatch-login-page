@@ -322,7 +322,7 @@ const validateSetPassword = $('.login-signal .set-password-form').validate(creat
 
 
 //註冊成功
-if(window.location.pathname == '/signInSuccess.html'){
+if(window.location.pathname == '/speedmatch-login-page/signInSuccess.html'){
 
     $.ajax({
         url: 'https://shun.inspire-dt.com/signInSuccess.php',
