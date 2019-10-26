@@ -324,15 +324,29 @@ const validateSetPassword = $('.login-signal .set-password-form').validate(creat
 
 //註冊成功
 if(window.location.pathname == '/signInSuccess.html'){
-    let object = JSON.parse(localStorage.getItem('signInData'))
-    $(`.login-signal .signIn-success-form .user-photo`).css({
-        'background-image': `url(${object.userPhoto})`,
-        'background-position': `center center`,
-        'background-size':`cover`,
-        'height': `90px`,
-        'width': `90px`,
-    })
-    $(`.login-signal .signIn-success-form .userAccount`).text(object.account)
+
+    $.ajax({
+        url: 'https://shun.inspire-dt.com/signInSuccess.php', // Apache 開的 網域
+        type: 'get',//可改 get 或 post
+        error: function(xhr) {
+        console.log('發生錯誤');
+        console.log(xhr);
+        },
+        success: function(response) {
+            console.log('成功')
+            let res = JSON.parse(response)
+            console.log(response)
+
+            $(`.login-signal .signIn-success-form .user-photo`).css({
+                'background-image': `url(${response.userPhoto})`,
+                'background-position': `center center`,
+                'background-size':`cover`,
+                'height': `90px`,
+                'width': `90px`,
+            })
+            $(`.login-signal .signIn-success-form .userAccount`).text(response.account)
+        }
+    });
 }
 
 //忘記密碼
