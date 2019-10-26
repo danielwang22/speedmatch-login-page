@@ -216,22 +216,23 @@ $(document).ready(function(){
 
 //倒數計時文字
 let Interval = null;
+let countDown = null;
+let Time = 60;
 const countDownResend = (container)=>{
         Interval = setInterval(()=>{
         verificationCode = null;
 
-        $(`.login-signal .${container}-form .countDown-text`)
-        .text('時間已到重新傳送代碼.....')
-        .css('color','red')
-
-        setTimeout(()=>{
+        countDown = setInterval(()=>{
 
             $(`.login-signal .${container}-form .countDown-text`)
-            .text('3分鐘後將會重新傳送代碼')
+            .text(`${Time--}秒後將會重新傳送代碼`)
             .css('color','rgb(116,116,116)')
 
-        },20000)
-    },180000)
+        },1000)
+
+        clearInterval(countDown);
+
+    },60000)
 }
 //電話號碼驗證
 jQuery.validator.addMethod('phone',function(value,element){
